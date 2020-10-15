@@ -19,7 +19,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Sarasa Mono SC" :size 14 :weight 'semi-light)
+(setq doom-font (font-spec :family "Sarasa Mono SC" :size 14)
       doom-variable-pitch-font (font-spec :family "Sarasa Mono SC" :size 14))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -59,3 +59,10 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(global-unset-key (kbd "C-SPC"))
+
+(map! :g
+      "s-o" (lookup-key (current-global-map) (kbd "C-x o"))  ;; Alias "C-x o" to "super-o"
+      "C-." #'set-mark-command       ;; C-SPC reserved for system input method
+ )

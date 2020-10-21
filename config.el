@@ -27,6 +27,10 @@
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-dracula)
 
+;; Use a image as doom-dashboard.
+(when (featurep! :ui doom-dashboard)
+  (setq fancy-splash-image (expand-file-name "splash.png" doom-private-dir)))
+
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")

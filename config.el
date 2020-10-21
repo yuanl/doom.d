@@ -66,3 +66,9 @@
       "s-o" (lookup-key (current-global-map) (kbd "C-x o"))  ;; Alias "C-x o" to "super-o"
       "C-." #'set-mark-command       ;; C-SPC reserved for system input method
  )
+
+(when (featurep! :ui treemacs)
+  (define-key!
+    "s-t" #'treemacs
+    "M-0" #'treemacs-select-window)
+  )

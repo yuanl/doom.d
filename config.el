@@ -62,10 +62,10 @@
 
 (global-unset-key (kbd "C-SPC"))
 
-(map! :g
-      "s-o" (lookup-key (current-global-map) (kbd "C-x o"))  ;; Alias "C-x o" to "super-o"
-      "C-." #'set-mark-command       ;; C-SPC reserved for system input method
- )
+(define-key!
+  "s-o" (lookup-key (current-global-map) (kbd "C-x o"))  ;; Alias "C-x o" to "super-o"
+  "C-." #'set-mark-command       ;; C-SPC reserved for system input method
+  )
 
 (when (featurep! :ui treemacs)
   (define-key!

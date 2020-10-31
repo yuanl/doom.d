@@ -35,18 +35,20 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
+(load! "+org")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type nil)
 
 (add-hook 'after-init-hook 'toggle-frame-maximized)
 
 (when IS-MAC
-  (setq mac-command-modifier 'meta)
-  (setq mac-right-command-modifier 'super)
-  (setq mac-option-modifier 'super)
-  )
+  (setq mac-command-modifier 'meta
+        mac-right-command-modifier 'super
+        mac-option-modifier 'super
+        ))
+
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -65,15 +67,12 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+
 (global-unset-key (kbd "C-SPC"))
 
-(define-key!
-  "s-o" (lookup-key (current-global-map) (kbd "C-x o"))  ;; Alias "C-x o" to "super-o"
-  "C-." #'set-mark-command       ;; C-SPC reserved for system input method
-  )
-
-(when (featurep! :ui treemacs)
-  (define-key!
-    "s-t" #'treemacs
-    "M-0" #'treemacs-select-window)
-  )
+(map! "s-o" (lookup-key (current-global-map) (kbd "C-x o"))  ;; Alias "C-x o" to "super-o"
+      "C-." #'set-mark-command       ;; C-SPC reserved for system input
+      ;; treemacs binding
+      (:when (featurep! :ui treemacs)
+       "s-t" #'treemacs
+       "M-0" #'treemacs-select-window))

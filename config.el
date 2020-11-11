@@ -91,4 +91,16 @@
       ;; treemacs binding
       (:when (featurep! :ui treemacs)
        "s-t" #'treemacs
-       "M-0" #'treemacs-select-window))
+       "M-0" #'treemacs-select-window)
+      ;;; smartparens
+      (:after smartparens
+        :map smartparens-mode-map
+        "C-)" #'sp-forward-slurp-sexp
+        "C-M-)" #'sp-forward-barf-sexp
+        "C-("  #'sp-backward-slurp-sexp
+        "C-M-("  #'sp-backward-barf-sexp))
+
+;;; show avator in magit
+(after! magit
+  (setq magit-revision-show-gravatars '("^Author:     " . "^Commit:     "))
+  )

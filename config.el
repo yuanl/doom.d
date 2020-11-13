@@ -26,7 +26,7 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-dracula)
-(setq doom-theme 'doom-solarized-light)
+(setq doom-theme 'tao-yang)
 
 ;; Use a image as doom-dashboard.
 (when (featurep! :ui doom-dashboard)
@@ -83,6 +83,8 @@
   ;; enable the /inline english/ mode for all buffers
   ;; (sis-global-inline-mode t)
   )
+
+(use-package! tao-theme)
 
 (global-unset-key (kbd "C-SPC"))
 

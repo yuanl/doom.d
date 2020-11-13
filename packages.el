@@ -52,3 +52,7 @@
 (package! sis
   :recipe (:host github :repo "laishulu/emacs-smart-input-source")
   :pin "775c6ff")
+
+(package! tao-theme
+  :recipe (:host github :repo "11111000000/tao-theme-emacs")
+  :pin "34917843cde086943816d8a48977658c663a784e")

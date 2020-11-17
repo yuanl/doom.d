@@ -100,9 +100,17 @@
         "C-)" #'sp-forward-slurp-sexp
         "C-M-)" #'sp-forward-barf-sexp
         "C-("  #'sp-backward-slurp-sexp
-        "C-M-("  #'sp-backward-barf-sexp))
+        "C-M-("  #'sp-backward-barf-sexp)
+      (:when (featurep! :term eshell)
+       "s-e" #'+eshell/toggle)
+      (:when (featurep! :checkers spell)
+       "C-M-<tab>" #'company-ispell))
 
 ;;; show avator in magit
 (after! magit
   (setq magit-revision-show-gravatars '("^Author:     " . "^Commit:     "))
   )
+
+(defun dired-rename-sdcard ()
+  "Rename SD card directory"
+  (file-attribute-status-change-time (file-attributes "~/src")))

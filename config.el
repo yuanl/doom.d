@@ -92,6 +92,10 @@
 (use-package! valign
   :hook (org-mode . valign-mode))
 
+;; (use-package! ox-latex-chinese
+;;   :after org
+;;   :config (oxlc/toggle-ox-latex-chinese t))
+
 (global-unset-key (kbd "C-SPC"))
 
 (map! "s-o" (lookup-key (current-global-map) (kbd "C-x o"))  ;; Alias "C-x o" to "super-o"

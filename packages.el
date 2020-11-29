@@ -59,5 +59,8 @@
 
 (package! solarized-theme)
 
+(package! ox-latex-chinese
+  :recipe (:host github :repo "zngtian/ox-latex-chinese"))
+
 (package! valign
   :recipe (:host github :repo "casouri/valign"))

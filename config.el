@@ -41,12 +41,13 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type nil)
 
-(add-hook 'after-init-hook 'toggle-frame-maximized)
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 (when IS-MAC
   (setq mac-command-modifier 'meta
         mac-right-command-modifier 'super
         mac-option-modifier 'super
+        mac-mouse-wheel-smooth-scroll t
         ))
 
 

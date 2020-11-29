@@ -62,5 +62,7 @@
 (package! ox-latex-chinese
   :recipe (:host github :repo "zngtian/ox-latex-chinese"))
 
+(package! nginx-mode :pin "a2bab83")
+
 (package! valign
   :recipe (:host github :repo "casouri/valign"))

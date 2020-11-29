@@ -113,6 +113,8 @@
         "C-M-("  #'sp-backward-barf-sexp)
       (:when (featurep! :term eshell)
        "s-e" #'+eshell/toggle)
+      (:when (featurep! :term vterm)
+       "s-e" #'+vterm/toggle)
       (:when (featurep! :checkers spell)
        "C-M-<tab>" #'company-ispell))
 

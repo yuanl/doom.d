@@ -87,8 +87,6 @@
   ;; (sis-global-inline-mode t)
   )
 
-(use-package! tao-theme)
-
 (use-package! valign
   :hook (org-mode . valign-mode))
 

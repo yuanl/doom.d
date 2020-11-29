@@ -89,6 +89,9 @@
 
 (use-package! tao-theme)
 
+(use-package! valign
+  :hook (org-mode . valign-mode))
+
 (global-unset-key (kbd "C-SPC"))
 
 (map! "s-o" (lookup-key (current-global-map) (kbd "C-x o"))  ;; Alias "C-x o" to "super-o"

@@ -59,3 +59,5 @@
 
 (package! solarized-theme)
 
+(package! valign
+  :recipe (:host github :repo "casouri/valign"))

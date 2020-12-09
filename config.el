@@ -122,3 +122,13 @@
 (defun dired-rename-sdcard ()
   "Rename SD card directory"
   (file-attribute-status-change-time (file-attributes "~/src")))
+
+(when (featurep! :ui doom-dashboard)
+  (add-to-list '+doom-dashboard-menu-sections
+               '("Open git project"
+                 :when (featurep! :tools magit)
+                 :icon (all-the-icons-octicon "mark-github" :face 'doom-dashboard-menu-title)
+                 :action magit-status)))
+
+(when (featurep! :email mu4e)
+  (load! "+email"))

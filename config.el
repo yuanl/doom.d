@@ -68,30 +68,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(use-package! sis
-  :config
-  (sis-ism-lazyman-config
-   "com.apple.keylayout.ABC"
-   "com.apple.inputmethod.SCIM.Shuangpin"
-   )
-  ;; enable the /cursor color/ mode
-  (sis-global-cursor-color-mode t)
-  (setq sis-other-cursor-color "grey")
-  ;; enable the /respect/ mode
-  (sis-global-respect-mode t)
-  ;; enable the /context/ mode for all buffers
-  ;; (sis-global-context-mode t)
-  ;; enable the /inline english/ mode for all buffers
-  ;; (sis-global-inline-mode t)
-  )
-
-(use-package! valign
-  :hook (org-mode . valign-mode))
-
-;; (use-package! ox-latex-chinese
-;;   :after org
-;;   :config (oxlc/toggle-ox-latex-chinese t))
-
 (global-unset-key (kbd "C-SPC"))
 
 (map! "s-o" (lookup-key (current-global-map) (kbd "C-x o"))  ;; Alias "C-x o" to "super-o"

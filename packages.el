@@ -49,7 +49,3 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! sis
-  :recipe (:host github :repo "laishulu/emacs-smart-input-source")
-  :pin "775c6ff")
-

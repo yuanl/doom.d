@@ -53,4 +53,11 @@
            "* %U %?\n %i\n %a"
            :heading "Changelog"
            :prepend t))
-        ))
+        )
+
+  (setq org-latex-compiler "xelatex")
+
+  (use-package! ox-extra
+    :config
+    (ox-extras-activate '(latex-header-blocks ignore-headlines)))
+  )

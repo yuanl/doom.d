@@ -9,10 +9,10 @@
         org-startup-indented t
         org-capture-templates
         '(("t" "Personal todo" entry
-           (file+headline +org-capture-todo-file "Inbox")
+           (file +org-capture-todo-file)
            "* [ ] %?\n%i\n%a" :prepend t)
           ("n" "Personal notes" entry
-           (file+headline +org-capture-notes-file "Inbox")
+           (file +org-capture-notes-file)
            "* %u %?\n%i\n%a" :prepend t)
           ("j" "Journal" entry
            (file+olp+datetree +org-capture-journal-file)

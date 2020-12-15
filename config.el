@@ -47,7 +47,6 @@
   (setq mac-command-modifier 'meta
         mac-right-command-modifier 'super
         mac-option-modifier 'super
-        mac-mouse-wheel-smooth-scroll t
         ))
 
 

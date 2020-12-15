@@ -55,6 +55,8 @@
            :prepend t))
         )
 
+  (setq org-archive-location "finished_archive::")
+
   (setq org-latex-compiler "xelatex")
 
   (use-package! ox-extra

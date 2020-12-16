@@ -73,7 +73,7 @@
       "C-." #'set-mark-command       ;; C-SPC reserved for system input
       ;; treemacs binding
       (:when (featurep! :ui treemacs)
-       "s-t" #'treemacs
+       "s-j" #'treemacs
        "M-0" #'treemacs-select-window)
       ;;; smartparens
       (:after smartparens
@@ -85,7 +85,7 @@
       (:when (featurep! :term eshell)
        "s-e" #'+eshell/toggle)
       (:when (featurep! :term vterm)
-       "s-e" #'+vterm/toggle)
+       "s-t" #'+vterm/toggle)
       (:when (featurep! :checkers spell)
        "C-M-<tab>" #'company-ispell))
 

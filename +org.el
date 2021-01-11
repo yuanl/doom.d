@@ -7,10 +7,12 @@
         ;; org-fontify-quote-and-verse-blocks nil
         ;; org-fontify-whole-heading-line nil
         org-startup-indented t
+        ;; default tag alignment of beorg. Looks good
+        org-tags-column -77
         org-capture-templates
         '(("t" "Personal todo" entry
            (file +org-capture-todo-file)
-           "* [ ] %?\n%i\n%a" :prepend t)
+           "* TODO %?\n%i\n%a" :prepend t)
           ("n" "Personal notes" entry
            (file +org-capture-notes-file)
            "* %u %?\n%i\n%a" :prepend t)

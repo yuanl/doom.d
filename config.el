@@ -109,5 +109,3 @@
 (when (featurep! :email mu4e)
   (load! "+email"))
 
-(after! spell-fu
-  (setq ispell-dictionary "en_US"))

@@ -20,7 +20,7 @@
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
 (setq doom-font (font-spec :family "Iosevka Slab" :size 14)
-      doom-variable-pitch-font (font-spec :family "Roboto Slab")
+      doom-variable-pitch-font (font-spec :family "Iosevka Slab")
       doom-unicode-font (font-spec :family "Source Han Serif SC" :weight 'semi-bold))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and

@@ -76,6 +76,8 @@
       (:when (featurep! :ui treemacs)
        "s-j" #'treemacs
        "M-0" #'treemacs-select-window)
+      ;; eww browser
+      "s-b" #'eww
       ;;; smartparens
       (:after smartparens
         :map smartparens-mode-map

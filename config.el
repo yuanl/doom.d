@@ -27,7 +27,8 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-dracula)
-(setq doom-theme 'doom-solarized-light)
+(setq doom-theme 'default)
+(add-hook 'doom-init-ui-hook #'doom-init-extra-fonts-h)
 
 ;; Use a image as doom-dashboard.
 (when (featurep! :ui doom-dashboard)

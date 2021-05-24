@@ -121,6 +121,7 @@
   (rime-user-data-dir "~/Library/Rime/")
   (default-input-method "rime")
   (rime-show-candidate 'posframe)
+  (rime-posframe-properties '(:internal-border-width 6))
   (rime-disable-predicates '(rime-predicate-after-alphabet-char-p
                              rime-predicate-prog-in-code-p
                              rime-predicate-ace-window-p

@@ -94,8 +94,7 @@
 
 ;;; show avator in magit
 (after! magit
-  (setq magit-revision-show-gravatars '("^Author:     " . "^Commit:     "))
-  )
+  (setq magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")))
 
 (defun dired-rename-sdcard ()
   "Rename SD card directory"

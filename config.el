@@ -102,7 +102,7 @@
 
 (when (featurep! :ui doom-dashboard)
   (add-to-list '+doom-dashboard-menu-sections
-               '("Open git project"
+               '("Open magit project"
                  :when (featurep! :tools magit)
                  :icon (all-the-icons-octicon "mark-github" :face 'doom-dashboard-menu-title)
                  :action magit-status)))

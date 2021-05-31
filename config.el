@@ -9,6 +9,11 @@
 (setq user-full-name "YuanLiang"
       user-mail-address "yuanl.lee@gmail.com")
 
+;; When I bring up Doom's scratch buffer with SPC x, it's often to play with
+;; elisp or note something down (that isn't worth an entry in my org files). I
+;; can do both in `lisp-interaction-mode'.
+(setq doom-scratch-initial-major-mode 'lisp-interaction-mode)
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
 ;;

@@ -24,9 +24,9 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Iosevka Slab ss08" :size 14)
-      doom-variable-pitch-font (font-spec :family "Iosevka Slab ss08")
-      doom-unicode-font (font-spec :family "Source Han Serif SC" :weight 'semi-bold)) ;;中文效果，言字
+(setq doom-font (font-spec :family "Iosevka" :size 14)
+      doom-variable-pitch-font (font-spec :family "Iosevka")
+      doom-unicode-font (font-spec :family "Hiragino Sans GB")) ;;中文效果，言字
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the

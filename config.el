@@ -96,7 +96,9 @@
       (:when (featurep! :term vterm)
        "s-t" #'+vterm/toggle)
       (:when (featurep! :checkers spell)
-       "C-M-<tab>" #'company-ispell))
+       "C-M-<tab>" #'company-ispell)
+      (:when (featurep! :app rss)
+       "C-x w" #'elfeed))
 
 ;;; show avator in magit
 (after! magit

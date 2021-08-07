@@ -26,7 +26,8 @@
 ;; font string. You generally only need these two:
 (setq doom-font (font-spec :family "Iosevka Slab" :size 14)
       doom-variable-pitch-font (font-spec :family "Iosevka Slab")
-      doom-unicode-font (font-spec :family "Source Han Serif SC")) ;;中文效果，言字
+      doom-unicode-font (font-spec :family (cond (IS-MAC "PingFang SC") ;;中文效果，言字
+                                                 (IS-LINUX "Source Han Serif SC"))))
 
 
 ;; There are two ways to load a theme. Both assume the theme is installed and

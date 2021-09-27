@@ -102,10 +102,6 @@
       (:when (featurep! :app rss)
        "C-x w" #'elfeed))
 
-;;; show avator in magit
-(after! magit
-  (setq magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")))
-
 (defun dired-rename-sdcard ()
   "Rename SD card directory"
   (file-attribute-status-change-time (file-attributes "~/src")))

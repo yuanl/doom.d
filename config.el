@@ -24,8 +24,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "PragmataPro" :size 14)
-      doom-variable-pitch-font (font-spec :family "PragmataPro"))
+(setq doom-font (font-spec :family "Iosevka Slab" :size 14)
+      doom-variable-pitch-font (font-spec :family "iosevka Slab"))
 
 (load! "+cnfont")
 
@@ -33,7 +33,8 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-dracula)
-(setq doom-theme 'doom-solarized-light)
+;;(setq doom-theme 'doom-solarized-light)
+(setq doom-theme nil)
 
 ;; Use a image as doom-dashboard.
 (when (featurep! :ui doom-dashboard)

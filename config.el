@@ -141,3 +141,10 @@
 ;;                              rime-predicate-space-after-cc-p))
 ;;   (rime-show-preedit 'inline)
 ;;   (rime-candidate-num-format-function #'rime--disable-candidate-num))
+
+;; eliminated wrong argument issue in emacs29
+(general-auto-unbind-keys :off)
+(remove-hook 'doom-after-init-modules-hook #'general-auto-unbind-keys)
+
+;; new pixel scroll feature in emacs29
+(pixel-scroll-precision-mode t)

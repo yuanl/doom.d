@@ -49,8 +49,7 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type nil)
 
-;; (pushnew! initial-frame-alist '(width . 140) '(height . 45))
-;; (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 (when IS-MAC
   (setq mac-command-modifier 'meta

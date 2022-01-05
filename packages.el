@@ -51,3 +51,5 @@
 
 (package! osx-trash :disable t)
 ;; (package! rime :pin "519e6eb3b5e8e668c2835d27f54fcf5776242576")
+
+(package! whole-line-or-region)

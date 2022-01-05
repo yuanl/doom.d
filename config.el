@@ -151,3 +151,10 @@
   '(aw-leading-char-face
     :foreground "white" :background "red"
     :weight bold :height 2.5 :box (:line-width 10 :color "red"))))
+
+(use-package! langtool
+  :init (setq langtool-default-language "en-GB"))
+
+(use-package! whole-line-or-region
+  :init
+  (add-hook! 'after-init-hook 'whole-line-or-region-global-mode t))

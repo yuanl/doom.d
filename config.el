@@ -158,3 +158,10 @@
 (use-package! whole-line-or-region
   :init
   (add-hook! 'after-init-hook 'whole-line-or-region-global-mode t))
+
+(after! eshell
+  :config
+  (add-hook! 'eshell-mode-hook
+    (defun +eshell-no-auto-complete-h ()
+      "Disable auto completion at eshell."
+      (setq-local company-idle-delay nil))))

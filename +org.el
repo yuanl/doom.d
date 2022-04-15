@@ -3,6 +3,7 @@
 ;; (remove-hook! 'org-mode-hook #'org-superstar-mode)
 
 (after! org
+  (add-to-list 'org-agenda-files "~/work.org")
   (setq org-hide-leading-stars nil
         ;; org-fontify-quote-and-verse-blocks nil
         ;; org-fontify-whole-heading-line nil
@@ -11,12 +12,15 @@
         '(("t" "Personal todo" entry
            (file +org-capture-todo-file)
            "* TODO %?\n%i\n%a" :prepend t)
-          ("n" "Personal notes" entry
-           (file +org-capture-notes-file)
-           "* %u %?\n%i\n%a" :prepend t)
           ("j" "Journal" entry
            (file+olp+datetree +org-capture-journal-file)
            "* %U %?\n%i\n%a" :prepend t)
+          ("n" "New Customer Case" entry
+           (file+headline "~/work.org" "Case Work log")
+           "* TODO %c %^{Subject} %^g\n%?" :empty-lines 1)
+          ("l" "Case WorkLog" plain
+           (clock)
+           "\n%U:\n%?" :empty-lines 1)
 
           ;; Will use {project-root}/{todo,notes,changelog}.org, unless a
           ;; {todo,notes,changelog}.org file is found in a parent directory.
@@ -55,6 +59,7 @@
            :prepend t))
         )
 
+
   (setq org-archive-location "finished_archive::")
 
   (setq org-latex-compiler "xelatex")
@@ -62,4 +67,8 @@
   (use-package! ox-extra
     :config
     (ox-extras-activate '(latex-header-blocks ignore-headlines)))
-  )
+
+  (use-package! opencc
+    :commands (opencc-region))
+
+)

@@ -50,6 +50,8 @@
 ;(unpin! t)
 
 (package! osx-trash :disable t)
-;; (package! rime :pin "519e6eb3b5e8e668c2835d27f54fcf5776242576")
-
+;; (package! rime :pin "e5727c5218a4345adb9b960cf6f4202246aea70c")
+(package! langtool)
 (package! whole-line-or-region)
+(package! opencc :pin "8c539f72669ba9a99d8b5198db5ea930897ad1b9")
+(package! flycheck-languagetool)

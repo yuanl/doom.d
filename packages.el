@@ -53,3 +53,19 @@
 ;; (package! rime :pin "519e6eb3b5e8e668c2835d27f54fcf5776242576")
 
 (package! whole-line-or-region)
+
+(package! corfu
+  :recipe (:host github :repo "minad/corfu"))
+(package! coruf-doc
+  :recipe (:host github :repo "galeo/corfu-doc"))
+(package! cape
+  :recipe (:host github :repo "minad/cape"))
+(package! kind-icon)
+
+(package! orderless
+  :recipe (:host github :repo "oantolin/orderless"))
+(package! postframe
+  :recipe (:host github :repo "tumashu/posframe"))
+
+(package! corfu-english-helper
+  :recipe (:host github :repo "manateelazycat/corfu-english-helper"))

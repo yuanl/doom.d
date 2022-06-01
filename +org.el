@@ -8,6 +8,7 @@
         ;; org-fontify-quote-and-verse-blocks nil
         ;; org-fontify-whole-heading-line nil
         org-startup-indented t
+        org-tags-column -77
         org-capture-templates
         '(("t" "Personal todo" entry
            (file +org-capture-todo-file)
@@ -17,7 +18,10 @@
            "* %U %?\n%i\n%a" :prepend t)
           ("n" "New Customer Case" entry
            (file+headline "~/work.org" "Case Work log")
-           "* TODO %c %^{Subject} %^g\n%?" :empty-lines 1)
+           "* TODO %^{Case_ID} %^{Subject} %^g\n%?\n** WL\n" :empty-lines 1)
+          ("c" "Manually Cc Case" entry
+           (file+headline "~/work.org" "Cc Case")
+           "* [[https://command-center.support.aws.a2z.com/case-console#/cases/%^{Case_ID}][%\\1]] %?")
           ("l" "Case WorkLog" plain
            (clock)
            "\n%U:\n%?" :empty-lines 1)

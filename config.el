@@ -27,6 +27,7 @@
 (setq doom-font (font-spec :family "Iosevka Slab" :size 14)
       doom-variable-pitch-font (font-spec :family "iosevka Slab"))
 
+(set-language-environment "UTF-8")
 (load! "+cnfont")
 
 ;; There are two ways to load a theme. Both assume the theme is installed and

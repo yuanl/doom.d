@@ -54,18 +54,21 @@
 
 (package! whole-line-or-region)
 
-(package! corfu
-  :recipe (:host github :repo "minad/corfu"))
-(package! coruf-doc
-  :recipe (:host github :repo "galeo/corfu-doc"))
-(package! cape
-  :recipe (:host github :repo "minad/cape"))
-(package! kind-icon)
+;; (package! corfu
+;;   :recipe (:files (:defaults "extensions/*.el")))
+;; (package! corfu-doc)
+;; (package! cape)
 
-(package! orderless
-  :recipe (:host github :repo "oantolin/orderless"))
+;; (package! kind-icon)
+
+(package! orderless)
 (package! postframe
   :recipe (:host github :repo "tumashu/posframe"))
 
-(package! corfu-english-helper
-  :recipe (:host github :repo "manateelazycat/corfu-english-helper"))
+;; (package! corfu-english-helper
+;;   :recipe (:host github :repo "manateelazycat/corfu-english-helper"))
+
+(package! lsp-bridge
+  :recipe (:host github
+           :repo "manateelazycat/lsp-bridge"
+           :files (:defaults "*.py" "core" "langserver" "acm")))

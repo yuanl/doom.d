@@ -54,19 +54,9 @@
 
 (package! whole-line-or-region)
 
-;; (package! corfu
-;;   :recipe (:files (:defaults "extensions/*.el")))
-;; (package! corfu-doc)
-;; (package! cape)
-
-;; (package! kind-icon)
-
 (package! orderless)
 (package! postframe
   :recipe (:host github :repo "tumashu/posframe"))
-
-;; (package! corfu-english-helper
-;;   :recipe (:host github :repo "manateelazycat/corfu-english-helper"))
 
 (package! lsp-bridge
   :recipe (:host github

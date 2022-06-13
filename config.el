@@ -25,9 +25,20 @@
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
 (setq doom-font (font-spec :family "Iosevka Slab" :size 14)
-      doom-variable-pitch-font (font-spec :family "iosevka Slab"))
+      doom-variable-pitch-font (font-spec :family "Bookerly"))
 
 (load! "+cnfont")
+
+(use-package! modus-themes
+  :init
+  (setq modus-themes-mode-line '(accented borderless)
+        modus-themes-paren-match '(bold intense)
+        modus-themes-org-blocks 'gray-background
+        modus-themes-headings ; this is an alist: read the manual or its doc string
+        '((1 . (rainbow overline variable-pitch 1.3))
+          (2 . (rainbow overline variable-pitch 1.1))
+          (t . (semibold))))
+  (modus-themes-load-themes))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -53,7 +64,6 @@
 
 (when IS-MAC
   (setq mac-command-modifier 'meta
-        mac-right-command-modifier 'super
         mac-option-modifier 'super
         ))
 
@@ -152,8 +162,8 @@
     :foreground "white" :background "red"
     :weight bold :height 2.5 :box (:line-width 10 :color "red"))))
 
-(use-package! langtool
-  :init (setq langtool-default-language "en-GB"))
+;; (use-package! langtool
+;;   :init (setq langtool-default-language "en-GB"))
 
 (use-package! whole-line-or-region
   :init

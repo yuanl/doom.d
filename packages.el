@@ -54,6 +54,8 @@
 
 (package! whole-line-or-region)
 
+(package! modus-themes)
+
 (package! orderless)
 (package! postframe
   :recipe (:host github :repo "tumashu/posframe"))

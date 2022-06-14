@@ -64,7 +64,8 @@
 
 (when IS-MAC
   (setq mac-command-modifier 'meta
-        mac-option-modifier 'super
+        mac-option-modifier 'meta
+        mac-right-option-modifier 'meta
         ))
 
 

@@ -27,6 +27,7 @@
 (setq doom-font (font-spec :family "Iosevka Slab" :size 14)
       doom-variable-pitch-font (font-spec :family "Bookerly"))
 
+(set-language-environment "UTF-8")
 (load! "+cnfont")
 
 (use-package! modus-themes
@@ -59,6 +60,7 @@
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type nil)
+(setq word-wrap-by-category t)
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
@@ -133,22 +135,24 @@
 
 ;; (use-package! rime                      ;; 中文输入法的部分
 ;;   :init
-;;   (defun rime--disable-candidate-num (_)
-;;     "Disable numbering the candidate."
-;;     "")
+;;   ;; (defun rime--disable-candidate-num (_)
+;;   ;;   "Disable numbering the candidate."
+;;   ;;   "")
 ;;   :custom
 ;;   (rime-librime-root "/opt/local/")
 ;;   (rime-emacs-module-header-root (expand-file-name "../include" data-directory))
 ;;   (rime-user-data-dir "~/Library/Rime/")
 ;;   (default-input-method "rime")
-;;   (rime-show-candidate 'posframe)
-;;   (rime-posframe-properties '(:internal-border-width 6))
+;;   ;; (rime-show-candidate 'popup)
+;;   ;; (rime-posframe-properties '(:internal-border-width 6))
 ;;   (rime-disable-predicates '(rime-predicate-after-alphabet-char-p
+;;                              rime-predicate-current-uppercase-letter-p
 ;;                              rime-predicate-prog-in-code-p
 ;;                              rime-predicate-ace-window-p
 ;;                              rime-predicate-space-after-cc-p))
-;;   (rime-show-preedit 'inline)
-;;   (rime-candidate-num-format-function #'rime--disable-candidate-num))
+;;   ;; (rime-show-preedit 'inline)
+;;   ;; (rime-candidate-num-format-function #'rime--disable-candidate-num)
+;; )
 
 ;; eliminated wrong argument issue in emacs29
 (general-auto-unbind-keys :off)

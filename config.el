@@ -65,8 +65,7 @@
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 (when IS-MAC
-  (setq mac-command-modifier 'meta
-        mac-option-modifier 'meta
+  (setq mac-option-modifier 'meta
         mac-right-option-modifier 'meta
         ))
 
@@ -92,6 +91,7 @@
 
 (map! "s-o" (lookup-key (current-global-map) (kbd "C-x o"))  ;; Alias "C-x o" to "super-o"
       "C-." #'set-mark-command       ;; C-SPC reserved for system input
+      "C-+" #'er/expand-region       ;; Easier for split keyboard
       ;; treemacs binding
       (:when (featurep! :ui treemacs)
        "s-j" #'treemacs

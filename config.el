@@ -188,10 +188,5 @@
 (use-package! lsp-bridge
   :config
   (require 'lsp-bridge-jdtls)
-  (add-to-list 'lsp-bridge-lang-server-mode-list
-               '(yaml-mode . "yamlls")
-               t)
-  (add-to-list 'lsp-bridge-default-mode-hooks #'yaml-mode-hook)
   (yas-global-mode 1)
-  (global-lsp-bridge-mode)
-  )
+  (global-lsp-bridge-mode))

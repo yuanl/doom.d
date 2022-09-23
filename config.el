@@ -24,7 +24,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Iosevka Slab" :size 14)
+(setq doom-font (font-spec :family "Iosevka Slab" :size 16)
       doom-variable-pitch-font (font-spec :family "Bookerly"))
 
 (set-language-environment "UTF-8")
@@ -36,8 +36,8 @@
         modus-themes-paren-match '(bold intense)
         modus-themes-org-blocks 'gray-background
         modus-themes-headings ; this is an alist: read the manual or its doc string
-        '((1 . (rainbow overline variable-pitch 1.3))
-          (2 . (rainbow overline variable-pitch 1.1))
+        '((1 . (rainbow overline))
+          (2 . (rainbow overline))
           (t . (semibold))))
   (modus-themes-load-themes))
 
@@ -49,7 +49,7 @@
 (setq doom-theme 'modus-operandi)
 
 ;; Use a image as doom-dashboard.
-(when (featurep! :ui doom-dashboard)
+(when (modulep! :ui doom-dashboard)
   (setq fancy-splash-image (expand-file-name "splash.png" doom-private-dir)))
 
 ;; If you use `org' and don't want your org files in the default location below,
@@ -93,7 +93,7 @@
       "C-." #'set-mark-command       ;; C-SPC reserved for system input
       "C-+" #'er/expand-region       ;; Easier for split keyboard
       ;; treemacs binding
-      (:when (featurep! :ui treemacs)
+      (:when (modulep! :ui treemacs)
        "s-j" #'treemacs
        "M-0" #'treemacs-select-window)
       ;; eww browser
@@ -105,32 +105,35 @@
         "C-M-)" #'sp-forward-barf-sexp
         "C-("  #'sp-backward-slurp-sexp
         "C-M-("  #'sp-backward-barf-sexp)
-      (:when (featurep! :term eshell)
-       "s-e" #'+eshell/toggle)
-      (:when (featurep! :term vterm)
+      (:when (modulep! :term eshell)
+       "s-t" #'+eshell/toggle)
+      (:when (modulep! :term vterm)
        "s-t" #'+vterm/toggle)
-      (:when (featurep! :checkers spell)
+      (:when (modulep! :checkers spell)
        "C-M-<tab>" #'company-ispell)
-      (:when (featurep! :app rss)
-       "C-x w" #'elfeed))
+      (:when (modulep! :app rss)
+       "C-x w" #'elfeed)
+      (:when (modulep! :lang org)
+       "s--" #'org-insert-todo-heading)
+       "s-e" #'lsp-bridge-toggle-english-helper)
 
 (defun dired-rename-sdcard ()
   "Rename SD card directory"
   (file-attribute-status-change-time (file-attributes "~/src")))
 
-(when (featurep! :ui doom-dashboard)
+(when (modulep! :ui doom-dashboard)
   (add-to-list '+doom-dashboard-menu-sections
                '("Open magit project"
-                 :when (featurep! :tools magit)
+                 :when (modulep! :tools magit)
                  :icon (all-the-icons-octicon "mark-github" :face 'doom-dashboard-menu-title)
                  :action magit-status))
   (add-to-list '+doom-dashboard-menu-sections
                '("Search Org"
-                 :when (featurep! :lang org)
+                 :when (modulep! :lang org)
                  :icon (all-the-icons-octicon "search" :face 'doom-dashboard-menu-title)
                  :action +default/org-notes-search)))
 
-(when (featurep! :email mu4e)
+(when (modulep! :email mu4e)
   (load! "+email"))
 
 ;; (use-package! rime                      ;; 中文输入法的部分
@@ -181,7 +184,7 @@
       "Disable auto completion at eshell."
       (setq-local company-idle-delay nil))))
 
-(after! lsp-yaml
+(after! lsp-yamls
   :config
   (setq lsp-yaml-schemas '(:kubernetes "/*.yaml")))
 
@@ -190,3 +193,11 @@
   (require 'lsp-bridge-jdtls)
   (yas-global-mode 1)
   (global-lsp-bridge-mode))
+
+;; (use-package! sis
+;;   :config
+;;   (setq sis-respect-evil-normal-escape nil)
+;;   (sis-ism-lazyman-config
+;;    "com.apple.keylayout.ABC"
+;;    "im.rime.inputmethod.Squirrel.Rime")
+;;   (sis-global-respect-mode t))

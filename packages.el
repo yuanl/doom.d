@@ -63,4 +63,6 @@
 (package! lsp-bridge
   :recipe (:host github
            :repo "manateelazycat/lsp-bridge"
-           :files (:defaults "*.py" "core" "langserver" "acm")))
+           :files (:defaults "*.py" "core" "langserver" "acm" "multiserver" "resources")))
+
+(package! sis)

@@ -201,3 +201,12 @@
    "com.apple.keylayout.ABC"
    "im.rime.inputmethod.Squirrel.Rime")
   (sis-global-respect-mode t))
+
+(use-package! deno-bridge-jieba
+  :config
+  ;; (deno-bridge-jieba-start)
+  :bind (([remap forward-word] . deno-bridge-jieba-forward-word)
+         ([remap backward-word] . deno-bridge-jieba-backward-word)
+         ([remap kill-word]. deno-bridge-jieba-kill-word)
+         ([remap backward-kill-word] . deno-bridge-jieba-backward-kill-word)
+         ))

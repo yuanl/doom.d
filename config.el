@@ -158,8 +158,8 @@
 ;; )
 
 ;; eliminated wrong argument issue in emacs29
-(general-auto-unbind-keys :off)
-(remove-hook 'doom-after-init-modules-hook #'general-auto-unbind-keys)
+;; (general-auto-unbind-keys :off)
+;; (remove-hook 'doom-after-init-modules-hook #'general-auto-unbind-keys)
 
 ;; new pixel scroll feature in emacs29
 (pixel-scroll-precision-mode t)
@@ -184,9 +184,9 @@
       "Disable auto completion at eshell."
       (setq-local company-idle-delay nil))))
 
-(after! lsp-yamls
-  :config
-  (setq lsp-yaml-schemas '(:kubernetes "/*.yaml")))
+;; (after! lsp-yamls
+;;   :config
+;;   (setq lsp-yaml-schemas '(:kubernetes "/*.yaml")))
 
 (use-package! lsp-bridge
   :config
@@ -194,10 +194,10 @@
   (yas-global-mode 1)
   (global-lsp-bridge-mode))
 
-;; (use-package! sis
-;;   :config
-;;   (setq sis-respect-evil-normal-escape nil)
-;;   (sis-ism-lazyman-config
-;;    "com.apple.keylayout.ABC"
-;;    "im.rime.inputmethod.Squirrel.Rime")
-;;   (sis-global-respect-mode t))
+(use-package! sis
+  :config
+  (setq sis-respect-evil-normal-escape nil)
+  (sis-ism-lazyman-config
+   "com.apple.keylayout.ABC"
+   "im.rime.inputmethod.Squirrel.Rime")
+  (sis-global-respect-mode t))

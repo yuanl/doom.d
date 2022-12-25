@@ -18,7 +18,7 @@
            "* %U %?\n%i\n%a" :prepend t)
           ("n" "New Customer Case" entry
            (file+headline "~/work.org" "Case Work log")
-           "* TODO %^{Case_ID} %^{Subject} %^g\n%?\n" :empty-lines 1)
+           "* %^{Case_ID} %^{Subject} %^g\n%?\n" :empty-lines 1)
           ("c" "Manually Cc Case" entry
            (file+headline "~/work.org" "Cc Case")
            "* [[https://command-center.support.aws.a2z.com/case-console#/cases/%^{Case_ID}][%\\1]] %?")
@@ -74,5 +74,12 @@
 
   (use-package! opencc
     :commands (opencc-region))
+
+  (use-package! pangu-spacing
+    :config
+    (require 'pangu-spacing)
+    (setq pangu-spacing-real-insert-separtor t)
+    ;; :hook (org-mode global-pangu-spacing-mode)
+    )
 
 )

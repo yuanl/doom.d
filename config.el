@@ -115,11 +115,8 @@
        "C-x w" #'elfeed)
       (:when (modulep! :lang org)
        "s--" #'org-insert-todo-heading)
-       "s-e" #'lsp-bridge-toggle-english-helper)
+       "s-e" #'lsp-bridge-toggle-sdcv-helper)
 
-(defun dired-rename-sdcard ()
-  "Rename SD card directory"
-  (file-attribute-status-change-time (file-attributes "~/src")))
 
 (when (modulep! :ui doom-dashboard)
   (add-to-list '+doom-dashboard-menu-sections

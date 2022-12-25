@@ -210,3 +210,15 @@
          ([remap kill-word]. deno-bridge-jieba-kill-word)
          ([remap backward-kill-word] . deno-bridge-jieba-backward-kill-word)
          ))
+
+(use-package! opencc
+  :custom
+  (opencc-configuration-files '("aws"
+                                "s2t"
+                                "t2s"
+                                "s2tw"
+                                "tw2s"
+                                "s2hk"
+                                "hk2s"
+                                "s2twp"
+                                "tw2sp")))

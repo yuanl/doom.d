@@ -80,4 +80,6 @@
 
 (package! websocket)
 
-(package! org-modern)
+(package! pangu-spacing)
+
+(package! opencc)

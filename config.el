@@ -125,11 +125,12 @@
                  :when (modulep! :tools magit)
                  :icon (all-the-icons-octicon "mark-github" :face 'doom-dashboard-menu-title)
                  :action magit-status))
-  (add-to-list '+doom-dashboard-menu-sections
-               '("Search Org"
-                 :when (modulep! :lang org)
-                 :icon (all-the-icons-octicon "search" :face 'doom-dashboard-menu-title)
-                 :action +default/org-notes-search)))
+  ;; (add-to-list '+doom-dashboard-menu-sections
+  ;;              '("Search Org"
+  ;;                :when (modulep! :lang org)
+  ;;                :icon (all-the-icons-octicon "search" :face 'doom-dashboard-menu-title)
+  ;;                :action +default/org-notes-search))
+  )
 
 (when (modulep! :email mu4e)
   (load! "+email"))

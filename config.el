@@ -37,9 +37,10 @@
         modus-themes-org-blocks 'gray-background
         modus-themes-headings ; this is an alist: read the manual or its doc string
         '((1 . (rainbow overline))
-          (2 . (rainbow overline))
+          (2 . (rainbow))
           (t . (semibold))))
-  (modus-themes-load-themes))
+  :config
+  (modus-themes-load-operandi))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the

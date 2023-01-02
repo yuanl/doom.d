@@ -72,9 +72,6 @@
     :config
     (ox-extras-activate '(latex-header-blocks ignore-headlines)))
 
-  (use-package! opencc
-    :commands (opencc-region))
-
   (use-package! pangu-spacing
     :config
     (require 'pangu-spacing)

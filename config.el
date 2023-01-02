@@ -211,6 +211,7 @@
          ))
 
 (use-package! opencc
+  :commands (opencc-replace-at-point)
   :custom
   (opencc-configuration-files '("aws"
                                 "s2t"

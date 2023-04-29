@@ -18,13 +18,13 @@
            "* %U %?\n%i\n%a" :prepend t)
           ("n" "New Customer Case" entry
            (file+headline "~/work.org" "Case Work log")
-           "* TODO %^{Case_ID} %^{Subject} %^g\n%?\n** WL\n" :empty-lines 1)
+           "* %^{Case_ID} %^{Subject} %^g\n%?\n" :empty-lines 1)
           ("c" "Manually Cc Case" entry
            (file+headline "~/work.org" "Cc Case")
            "* [[https://command-center.support.aws.a2z.com/case-console#/cases/%^{Case_ID}][%\\1]] %?")
           ("l" "Case WorkLog" plain
            (clock)
-           "\n%U:\n%?" :empty-lines 1)
+           "\nWL:\n%U:\n- [ ] %?\n\n" :empty-lines 1)
 
           ;; Will use {project-root}/{todo,notes,changelog}.org, unless a
           ;; {todo,notes,changelog}.org file is found in a parent directory.
@@ -72,7 +72,6 @@
     :config
     (ox-extras-activate '(latex-header-blocks ignore-headlines)))
 
-  (use-package! opencc
-    :commands (opencc-region))
+
 
 )

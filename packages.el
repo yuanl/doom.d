@@ -63,7 +63,9 @@
 (package! lsp-bridge
   :recipe (:host github
            :repo "manateelazycat/lsp-bridge"
-           :files (:defaults "*.py" "core" "langserver" "acm")))
+           :files (:defaults "*.py" "core" "langserver" "acm" "multiserver" "resources")))
+
+(package! sis)
 
 (package! deno-bridge
   :recipe (
@@ -84,3 +86,7 @@
   :recipe (:host github
            :repo "manateelazycat/mind-wave"
            :files (:defaults "*.py")))
+
+(package! opencc)
+
+(package! rime)

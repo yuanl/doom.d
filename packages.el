@@ -79,3 +79,8 @@
 (package! websocket)
 
 (package! org-modern)
+
+(package! mind-wave
+  :recipe (:host github
+           :repo "manateelazycat/mind-wave"
+           :files (:defaults "*.py")))

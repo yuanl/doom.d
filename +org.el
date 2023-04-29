@@ -72,11 +72,6 @@
     :config
     (ox-extras-activate '(latex-header-blocks ignore-headlines)))
 
-  (use-package! pangu-spacing
-    :config
-    (require 'pangu-spacing)
-    (setq pangu-spacing-real-insert-separtor t)
-    ;; :hook (org-mode global-pangu-spacing-mode)
-    )
+
 
 )

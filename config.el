@@ -138,30 +138,27 @@
 (when (modulep! :email mu4e)
   (load! "+email"))
 
-;; (use-package! rime                      ;; 中文输入法的部分
-;;   :init
-;;   ;; (defun rime--disable-candidate-num (_)
-;;   ;;   "Disable numbering the candidate."
-;;   ;;   "")
-;;   :custom
-;;   (rime-librime-root "/opt/local/")
-;;   (rime-emacs-module-header-root (expand-file-name "../include" data-directory))
-;;   (rime-user-data-dir "~/Library/Rime/")
-;;   (default-input-method "rime")
-;;   ;; (rime-show-candidate 'popup)
-;;   ;; (rime-posframe-properties '(:internal-border-width 6))
-;;   (rime-disable-predicates '(rime-predicate-after-alphabet-char-p
-;;                              rime-predicate-current-uppercase-letter-p
-;;                              rime-predicate-prog-in-code-p
-;;                              rime-predicate-ace-window-p
-;;                              rime-predicate-space-after-cc-p))
-;;   ;; (rime-show-preedit 'inline)
-;;   ;; (rime-candidate-num-format-function #'rime--disable-candidate-num)
-;; )
-
-;; eliminated wrong argument issue in emacs29
-;; (general-auto-unbind-keys :off)
-;; (remove-hook 'doom-after-init-modules-hook #'general-auto-unbind-keys)
+(use-package! rime                      ;; 中文输入法的部分
+  :init
+  ;; (defun rime--disable-candidate-num (_)
+  ;;   "Disable numbering the candidate."
+  ;;   "")
+  :custom
+  (rime-librime-root "/opt/local/")
+  (rime-emacs-module-header-root (expand-file-name "../include" data-directory))
+  (rime-user-data-dir "~/Library/Rime/")
+  (default-input-method "rime")
+  ;; (rime-show-candidate 'popup)
+  ;; (rime-posframe-properties '(:internal-border-width 6))
+  (rime-disable-predicates '(rime-predicate-after-alphabet-char-p
+                             rime-predicate-current-uppercase-letter-p
+                             rime-predicate-prog-in-code-p
+                             rime-predicate-org-in-src-block-p
+                             rime-predicate-ace-window-p
+                             rime-predicate-space-after-cc-p))
+  ;; (rime-show-preedit 'inline)
+  ;; (rime-candidate-num-format-function #'rime--disable-candidate-num)
+)
 
 ;; new pixel scroll feature in emacs29
 (pixel-scroll-precision-mode t)
@@ -192,26 +189,29 @@
 
 (use-package! lsp-bridge
   :config
-  (require 'lsp-bridge-jdtls)
+  (setq lsp-bridge-enable-search-words nil
+        acm-enable-search-file-words nil
+        acm-enable-doc nil)
   (yas-global-mode 1)
-  (global-lsp-bridge-mode))
+  (global-lsp-bridge-mode)
+  )
 
-(use-package! sis
-  :config
-  (setq sis-respect-evil-normal-escape nil)
-  (sis-ism-lazyman-config
-   "com.apple.keylayout.ABC"
-   "im.rime.inputmethod.Squirrel.Rime")
-  (sis-global-respect-mode t))
+;; (use-package! sis
+;;   :config
+;;   (setq sis-respect-evil-normal-escape nil)
+;;   (sis-ism-lazyman-config
+;;    "com.apple.keylayout.ABC"
+;;    "im.rime.inputmethod.Squirrel.Rime")
+;;   (sis-global-respect-mode t))
 
-(use-package! deno-bridge-jieba
-  :config
-  ;; (deno-bridge-jieba-start)
-  :bind (([remap forward-word] . deno-bridge-jieba-forward-word)
-         ([remap backward-word] . deno-bridge-jieba-backward-word)
-         ([remap kill-word]. deno-bridge-jieba-kill-word)
-         ([remap backward-kill-word] . deno-bridge-jieba-backward-kill-word)
-         ))
+;; (use-package! deno-bridge-jieba
+;;   :config
+;;   ;; (deno-bridge-jieba-start)
+;;   :bind (([remap forward-word] . deno-bridge-jieba-forward-word)
+;;          ([remap backward-word] . deno-bridge-jieba-backward-word)
+;;          ([remap kill-word]. deno-bridge-jieba-kill-word)
+;;          ([remap backward-kill-word] . deno-bridge-jieba-backward-kill-word)
+;;          ))
 
 (use-package! opencc
   :commands (opencc-replace-at-point)
@@ -225,3 +225,22 @@
                                 "hk2s"
                                 "s2twp"
                                 "tw2sp")))
+
+;; (use-package! pangu-spacing
+;;   :config
+;;   (setq pangu-spacing-real-insert-separtor t)
+;;   ;; (pangu-spacing-mode 1)
+;;   :hook (org-mode pangu-spacing-mode)
+;;   )
+
+(remove-hook! (prog-mode conf-mode) #'highlight-numbers-mode)
+(setq +emacs-lisp-enable-extra-fontification nil)
+
+(after! elisp-mode
+  (remove-hook! 'emacs-lisp-mode-hook
+    #'rainbow-delimiters-mode
+    #'highlight-quoted-mode
+    #'outline-minor-mode))
+
+(after! org
+  (setq org-startup-indented nil))

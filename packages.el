@@ -83,3 +83,5 @@
 (package! pangu-spacing)
 
 (package! opencc)
+
+(package! rime)

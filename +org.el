@@ -7,7 +7,7 @@
   (setq org-hide-leading-stars nil
         ;; org-fontify-quote-and-verse-blocks nil
         ;; org-fontify-whole-heading-line nil
-        org-startup-indented t
+        org-startup-indented nil
         org-tags-column -77
         org-capture-templates
         '(("t" "Personal todo" entry

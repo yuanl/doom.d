@@ -242,5 +242,4 @@
     #'highlight-quoted-mode
     #'outline-minor-mode))
 
-(after! org
-  (setq org-startup-indented nil))
+(use-package! mind-wave)

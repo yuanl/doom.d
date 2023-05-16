@@ -6,6 +6,7 @@
     (set-fontset-font (frame-parameter nil 'font)
                       charset (font-spec :family (cond (IS-MAC "Source Han Serif SC") ;;中文效果，言字
                                                        (IS-LINUX "Source Han Serif SC"))
-                                         :weight 'semi-bold))))
+                                         :weight 'semi-bold
+                                         ))))
 
 (add-hook! doom-first-buffer #'setup-chinese-fonts)

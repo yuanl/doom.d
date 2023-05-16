@@ -243,3 +243,6 @@
     #'outline-minor-mode))
 
 (use-package! mind-wave)
+
+(use-package! org-modern
+  :hook (org-mode . org-modern-mode))

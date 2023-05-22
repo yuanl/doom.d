@@ -4,8 +4,9 @@
   "Use another font for Chinese charater"
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font)
-                      charset (font-spec :family (cond (IS-MAC "Source Han Serif SC") ;;中文效果，言字
+                      charset (font-spec :family (cond (IS-MAC "LXGW WenKai Mono GB") ;;中文效果，言字
                                                        (IS-LINUX "Source Han Serif SC"))
-                                         :weight 'semi-bold))))
+                                         ;; :weight 'semi-bold
+                                         ))))
 
 (add-hook! doom-first-buffer #'setup-chinese-fonts)

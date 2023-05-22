@@ -30,27 +30,26 @@
 (set-language-environment "UTF-8")
 (load! "+cnfont")
 
-(use-package! modus-themes
-  :init
-  (setq modus-themes-mode-line '(accented borderless)
-        modus-themes-paren-match '(bold intense)
-        modus-themes-org-blocks 'gray-background
-        modus-themes-headings ; this is an alist: read the manual or its doc string
-        '((1 . (rainbow overline))
-          (2 . (rainbow))
-          (t . (semibold))))
-  :config
-  ;; (modus-themes-load-theme 'modus-operandi)
-  ;; (modus-themes-load-operandi)
-  (load-theme 'modus-operandi :no-confim)
-  )
+;; (use-package! modus-themes
+;;   :init
+;;   (setq modus-themes-mode-line '(accented borderless)
+;;         modus-themes-paren-match '(bold intense)
+;;         modus-themes-org-blocks 'gray-background
+;;         modus-themes-headings ; this is an alist: read the manual or its doc string
+;;         '((1 . (rainbow overline))
+;;           (2 . (rainbow))
+;;           (t . (semibold))))
+;;   :config
+;;   ;; (modus-themes-load-theme 'modus-operandi)
+;;   ;; (modus-themes-load-operandi)
+;;   (load-theme 'modus-operandi :no-confim)
+;;   )
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-dracula)
-;;(setq doom-theme 'doom-solarized-light)
-;; (setq doom-theme 'modus-operandi)
+(setq doom-theme nil)
 
 ;; Use a image as doom-dashboard.
 (when (modulep! :ui doom-dashboard)

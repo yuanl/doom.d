@@ -54,7 +54,7 @@
 (package! langtool)
 (package! whole-line-or-region)
 
-(package! modus-themes)
+(package! modus-themes :pin "829d06d9d3f6753dfcba3d811237cc138c5ffeb1")
 
 (package! orderless)
 (package! postframe

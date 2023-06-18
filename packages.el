@@ -54,7 +54,7 @@
 (package! langtool)
 (package! whole-line-or-region)
 
-(package! modus-themes :pin "829d06d9d3f6753dfcba3d811237cc138c5ffeb1")
+(package! modus-themes :pin "b4ef90bb950b820a3bf316d7b212320a5b2f84d7")
 
 (package! orderless)
 (package! postframe
@@ -64,8 +64,6 @@
   :recipe (:host github
            :repo "manateelazycat/lsp-bridge"
            :files (:defaults "*.py" "core" "langserver" "acm" "multiserver" "resources")))
-
-(package! sis)
 
 (package! deno-bridge
   :recipe (

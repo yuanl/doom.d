@@ -65,20 +65,20 @@
            :repo "manateelazycat/lsp-bridge"
            :files (:defaults "*.py" "core" "langserver" "acm" "multiserver" "resources")))
 
-(package! deno-bridge
-  :recipe (
-           :host github
-           :repo "manateelazycat/deno-bridge"
-           :files (:defaults "*.py")))
+;; (package! deno-bridge
+;;   :recipe (
+;;            :host github
+;;            :repo "manateelazycat/deno-bridge"
+;;            :files (:defaults "*.py")))
 
-(package! deno-bridge-jieba
-  :recipe (:host github
-           :repo "ginqi7/deno-bridge-jieba"
-           :files (:defaults "*.ts")))
+;; (package! deno-bridge-jieba
+;;   :recipe (:host github
+;;            :repo "ginqi7/deno-bridge-jieba"
+;;            :files (:defaults "*.ts")))
 
-(package! websocket)
+;; (package! websocket)
 
-(package! org-modern)
+;; (package! org-modern)
 
 (package! mind-wave
   :recipe (:host github
@@ -88,3 +88,12 @@
 (package! opencc)
 
 (package! rime)
+
+(package! shell-maker
+  :recipe (:host github :repo "xenodium/chatgpt-shell" :files ("shell-maker.el")))
+
+(package! chatgpt-shell
+  :recipe (:host github :repo "xenodium/chatgpt-shell" :files ("chatgpt-shell.el")))
+
+(package! nginx-mode
+  :recipe (:host github :repo "ajc/nginx-mode"))

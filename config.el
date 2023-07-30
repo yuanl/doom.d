@@ -231,6 +231,8 @@
 (use-package! chatgpt-shell
   :config
   (setq chatgpt-shell-openai-key
-        (auth-source-pick-first-password :host "api.openai.com")))
+        (auth-source-pick-first-password :host "api.openai.com"))
+  (add-to-list 'chatgpt-shell-system-prompts
+               '("EN_ZH Translate" . "You are a helpful English to Chinese assistant.")))
 
 (use-package! nginx-mode)

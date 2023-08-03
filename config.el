@@ -6,13 +6,13 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "YuanLiang"
+(setq user-full-name "Yuanliang"
       user-mail-address "yuanl.lee@gmail.com")
 
 ;; When I bring up Doom's scratch buffer with SPC x, it's often to play with
 ;; elisp or note something down (that isn't worth an entry in my org files). I
 ;; can do both in `lisp-interaction-mode'.
-(setq doom-scratch-initial-major-mode 'lisp-interaction-mode)
+;; (setq doom-scratch-initial-major-mode 'lisp-interaction-mode)
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -24,32 +24,32 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Iosevka Slab" :size 16)
-      doom-variable-pitch-font (font-spec :family "Bookerly"))
+(setq doom-font (font-spec :family "Iosevka" :size 16)
+      doom-variable-pitch-font (font-spec :family "Iosevka"))
 
 (set-language-environment "UTF-8")
 (load! "+cnfont")
 
-;; (use-package! modus-themes
-;;   :init
-;;   (setq modus-themes-mode-line '(accented borderless)
-;;         modus-themes-paren-match '(bold intense)
-;;         modus-themes-org-blocks 'gray-background
-;;         modus-themes-headings ; this is an alist: read the manual or its doc string
-;;         '((1 . (rainbow overline))
-;;           (2 . (rainbow))
-;;           (t . (semibold))))
-;;   :config
-;;   ;; (modus-themes-load-theme 'modus-operandi)
-;;   ;; (modus-themes-load-operandi)
-;;   (load-theme 'modus-operandi :no-confim)
-;;   )
+(use-package! modus-themes
+  :init
+  (setq modus-themes-mode-line '(accented borderless)
+        modus-themes-paren-match '(bold intense)
+        modus-themes-org-blocks 'gray-background
+        modus-themes-headings ; this is an alist: read the manual or its doc string
+        '((1 . (rainbow overline))
+          (2 . (rainbow))
+          (t . (semibold))))
+  :config
+  ;; (modus-themes-load-theme 'modus-operandi)
+  ;; (modus-themes-load-operandi)
+  (load-theme 'modus-operandi :no-confim)
+  )
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-;; (setq doom-theme 'doom-dracula)
-(setq doom-theme nil)
+(setq doom-theme 'modus-operandi)
+;; (setq doom-theme nil)
 
 ;; Use a image as doom-dashboard.
 (when (modulep! :ui doom-dashboard)
@@ -57,7 +57,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/")
 (load! "+org")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -65,7 +65,7 @@
 (setq display-line-numbers-type nil)
 (setq word-wrap-by-category t)
 
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+;; (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 (when IS-MAC
   (setq mac-option-modifier 'meta
@@ -100,7 +100,7 @@
        "s-j" #'treemacs
        "M-0" #'treemacs-select-window)
       ;; eww browser
-      "s-b" #'eww
+      ;; "s-b" #'eww
       ;;; smartparens
       (:after smartparens
         :map smartparens-mode-map
@@ -150,11 +150,12 @@
   ;; (rime-show-candidate 'popup)
   ;; (rime-posframe-properties '(:internal-border-width 6))
   (rime-disable-predicates '(rime-predicate-after-alphabet-char-p
+                             rime-predicate-space-after-cc-p)
                              rime-predicate-current-uppercase-letter-p
-                             rime-predicate-prog-in-code-p
+                             ;; rime-predicate-prog-in-code-p
                              rime-predicate-org-in-src-block-p
                              rime-predicate-ace-window-p
-                             rime-predicate-space-after-cc-p))
+                           )
   ;; (rime-show-preedit 'inline)
   ;; (rime-candidate-num-format-function #'rime--disable-candidate-num)
 )
@@ -188,29 +189,14 @@
 
 (use-package! lsp-bridge
   :config
-  (setq lsp-bridge-enable-search-words nil
+  (setq lsp-bridge-python-command "python3.11"
+        lsp-bridge-enable-search-words nil
         acm-enable-search-file-words nil
-        acm-enable-doc nil)
+        acm-enable-doc nil
+        lsp-bridge-python-command "python3.11")
   (yas-global-mode 1)
   (global-lsp-bridge-mode)
   )
-
-;; (use-package! sis
-;;   :config
-;;   (setq sis-respect-evil-normal-escape nil)
-;;   (sis-ism-lazyman-config
-;;    "com.apple.keylayout.ABC"
-;;    "im.rime.inputmethod.Squirrel.Rime")
-;;   (sis-global-respect-mode t))
-
-;; (use-package! deno-bridge-jieba
-;;   :config
-;;   ;; (deno-bridge-jieba-start)
-;;   :bind (([remap forward-word] . deno-bridge-jieba-forward-word)
-;;          ([remap backward-word] . deno-bridge-jieba-backward-word)
-;;          ([remap kill-word]. deno-bridge-jieba-kill-word)
-;;          ([remap backward-kill-word] . deno-bridge-jieba-backward-kill-word)
-;;          ))
 
 (use-package! opencc
   :commands (opencc-replace-at-point)
@@ -235,13 +221,34 @@
 (remove-hook! (prog-mode conf-mode) #'highlight-numbers-mode)
 (setq +emacs-lisp-enable-extra-fontification nil)
 
-(after! elisp-mode
-  (remove-hook! 'emacs-lisp-mode-hook
-    #'rainbow-delimiters-mode
-    #'highlight-quoted-mode
-    #'outline-minor-mode))
+;; (after! elisp-mode
+;;   (remove-hook! 'emacs-lisp-mode-hook
+;;     #'rainbow-delimiters-mode
+;;     #'highlight-quoted-mode
+;;     #'outline-minor-mode))
 
-(use-package! mind-wave)
+;; (use-package! mind-wave)
+(use-package! shell-maker)
+(use-package! chatgpt-shell
+  :config
+  (setq chatgpt-shell-openai-key
+        (auth-source-pick-first-password :host "api.openai.com"))
+  (add-to-list 'chatgpt-shell-system-prompts
+               '("EN_ZH Translate" . "You are a helpful English to Chinese assistant.")))
 
-(use-package! org-modern
-  :hook (org-mode . org-modern-mode))
+;; (use-package! org-modern
+;;   :hook (org-mode . org-modern-mode)
+;;   :custom (line-spacing 0.1))
+
+(setq gcmh-high-cons-threshold (* 256 1024 1024))
+
+(use-package! grab-mac-link
+  :config
+  (setq grab-mac-link-dwim-favourite-app 'firefox)
+  :bind ("s-b" . grab-mac-link-dwim))
+
+
+(use-package! epa
+  :config
+  (setq epg-pinentry-mode 'ask)
+  )

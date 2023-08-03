@@ -6,7 +6,7 @@
   (add-to-list 'org-agenda-files "~/work.org")
   (setq org-hide-leading-stars nil
         ;; org-fontify-quote-and-verse-blocks nil
-        ;; org-fontify-whole-heading-line nil
+        org-fontify-whole-heading-line t
         org-startup-indented nil
         org-tags-column -77
         org-capture-templates
@@ -17,10 +17,10 @@
            (file+olp+datetree +org-capture-journal-file)
            "* %U %?\n%i\n%a" :prepend t)
           ("n" "New Customer Case" entry
-           (file+headline "~/work.org" "Case Work log")
+           (file+headline "~/work.org.gpg" "Case Work log")
            "* %^{Case_ID} %^{Subject} %^g\n%?\n" :empty-lines 1)
           ("c" "Manually Cc Case" entry
-           (file+headline "~/work.org" "Cc Case")
+           (file+headline "~/work.org.gpg" "Cc Case")
            "* [[https://command-center.support.aws.a2z.com/case-console#/cases/%^{Case_ID}][%\\1]] %?")
           ("l" "Case WorkLog" plain
            (clock)
@@ -67,6 +67,8 @@
   (setq org-archive-location "finished_archive::")
 
   (setq org-latex-compiler "xelatex")
+
+  (setq split-width-threshold 200)
 
   (use-package! ox-extra
     :config

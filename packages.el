@@ -80,20 +80,16 @@
 
 ;; (package! org-modern)
 
-(package! mind-wave
-  :recipe (:host github
-           :repo "manateelazycat/mind-wave"
-           :files (:defaults "*.py")))
-
 (package! opencc)
 
 (package! rime)
 
-(package! shell-maker
-  :recipe (:host github :repo "xenodium/chatgpt-shell" :files ("shell-maker.el")))
+;; (package! shell-maker
+;;   :recipe (:host github :repo "xenodium/chatgpt-shell" :files ("shell-maker.el")))
 
 (package! chatgpt-shell
-  :recipe (:host github :repo "xenodium/chatgpt-shell" :files ("chatgpt-shell.el")))
+  :recipe (:host github :repo "xenodium/chatgpt-shell"
+           :files(:defaults)))
 
 (package! nginx-mode
   :recipe (:host github :repo "ajc/nginx-mode"))

@@ -200,16 +200,9 @@
 
 (use-package! opencc
   :commands (opencc-replace-at-point)
-  :custom
-  (opencc-configuration-files '("aws"
-                                "s2t"
-                                "t2s"
-                                "s2tw"
-                                "tw2s"
-                                "s2hk"
-                                "hk2s"
-                                "s2twp"
-                                "tw2sp")))
+  :config
+  (add-to-list 'opencc-configuration-files "aws")
+  )
 
 ;; (use-package! pangu-spacing
 ;;   :config

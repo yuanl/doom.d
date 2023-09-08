@@ -22,9 +22,9 @@
           ("c" "Manually Cc Case" entry
            (file+headline "~/work.org.gpg" "Cc Case")
            "* [[https://command-center.support.aws.a2z.com/case-console#/cases/%^{Case_ID}][%\\1]] %?")
-          ("l" "Case WorkLog" plain
+          ("l" "Case WorkLog" entry
            (clock)
-           "\nWL:\n%U:\n- [ ] %?\n\n" :empty-lines 1)
+           "* WL:\n%U:\n- [ ] %?\n\n" :empty-lines 1)
 
           ;; Will use {project-root}/{todo,notes,changelog}.org, unless a
           ;; {todo,notes,changelog}.org file is found in a parent directory.

@@ -195,6 +195,8 @@
         lsp-bridge-enable-search-words nil
         acm-enable-search-file-words nil
         acm-enable-doc nil
+        acm-enable-tabnine nil
+        acm-enable-path t
         lsp-bridge-python-command "python3.11")
   (yas-global-mode 1)
   (global-lsp-bridge-mode)

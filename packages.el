@@ -63,7 +63,9 @@
 (package! lsp-bridge
   :recipe (:host github
            :repo "manateelazycat/lsp-bridge"
-           :files (:defaults "*.py" "core" "langserver" "acm" "multiserver" "resources")))
+           :files (:defaults "*.py" "core" "langserver" "acm" "multiserver" "resources")
+           :build (:not compile)
+           ))
 
 ;; (package! deno-bridge
 ;;   :recipe (

@@ -6,7 +6,7 @@
   (add-to-list 'org-agenda-files "~/work.org")
   (setq org-hide-leading-stars nil
         ;; org-fontify-quote-and-verse-blocks nil
-        org-fontify-whole-heading-line t
+        ;; org-fontify-whole-heading-line t
         org-startup-indented nil
         org-tags-column -77
         org-capture-templates

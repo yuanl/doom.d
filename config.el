@@ -31,24 +31,26 @@
 (load! "+cnfont")
 
 (use-package! modus-themes
-  :init
-  (setq modus-themes-mode-line '(accented borderless)
-        modus-themes-paren-match '(bold intense)
-        modus-themes-org-blocks 'gray-background
+  :config
+  (setq modus-themes-org-blocks 'gray-background
         modus-themes-headings ; this is an alist: read the manual or its doc string
         '((1 . (rainbow overline))
           (2 . (rainbow))
           (t . (semibold))))
-  :config
-  ;; (modus-themes-load-theme 'modus-operandi)
-  ;; (modus-themes-load-operandi)
-  (load-theme 'modus-operandi :no-confim)
+
+  (setq modus-themes-common-palette-overrides
+      '((bg-mode-line-active bg-cyan-subtle)
+        (fg-mode-line-active cyan-faint)
+        (border-mode-line-active unspecified)
+        (border-mode-line-inactive unspecified)))
+
+  (load-theme 'modus-operandi :no-confirm)
   )
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'modus-operandi)
+;; (setq doom-theme 'modus-operandi)
 ;; (setq doom-theme nil)
 
 ;; Use a image as doom-dashboard.
@@ -161,7 +163,7 @@
 )
 
 ;; new pixel scroll feature in emacs29
-(pixel-scroll-precision-mode t)
+;; (pixel-scroll-precision-mode t)
 
 (after! ace-window
   (custom-set-faces!

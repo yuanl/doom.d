@@ -163,7 +163,7 @@
 )
 
 ;; new pixel scroll feature in emacs29
-;; (pixel-scroll-precision-mode t)
+(pixel-scroll-precision-mode t)
 
 (after! ace-window
   (custom-set-faces!

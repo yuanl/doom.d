@@ -249,7 +249,3 @@
   :config
   (setq epg-pinentry-mode 'ask)
   )
-
-(after! vertico
-  (map! :map vertico-map
-        "s-SPC" #'+vertico/embark-preview))

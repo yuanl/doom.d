@@ -196,6 +196,10 @@
 ;;   :config
 ;;   (setq lsp-yaml-schemas '(:kubernetes "/*.yaml")))
 
+(use-package! vterm
+  :config
+  (setq vterm-always-compile-module t))
+
 (use-package! lsp-bridge
   :config
   (setq lsp-bridge-python-command "python3.11"
@@ -204,8 +208,10 @@
         acm-enable-doc nil
         acm-enable-tabnine nil
         acm-enable-path t
+        acm-backend-yas-candidate-min-length 2
         lsp-bridge-python-command "python3.11")
-  (yas-global-mode 1)
+  ;; (yas-global-mode 1)
+  :init
   (global-lsp-bridge-mode)
   )
 

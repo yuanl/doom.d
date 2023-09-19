@@ -63,6 +63,9 @@
            :prepend t))
         )
 
+  (set-ligatures! 'org-mode
+    :quote "#+begin_example"
+    :quote_end "#+end_example")
 
   (setq org-archive-location "finished_archive::")
 

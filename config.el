@@ -39,10 +39,11 @@
           (t . (semibold))))
 
   (setq modus-themes-common-palette-overrides
-      '((bg-mode-line-active bg-cyan-subtle)
-        (fg-mode-line-active cyan-faint)
-        (border-mode-line-active unspecified)
-        (border-mode-line-inactive unspecified)))
+      '((border-mode-line-active unspecified)
+        (border-mode-line-inactive unspecified)
+        ;; (bg-mode-line-active bg-cyan-subtle)
+        ;; (fg-mode-line-active cyan-faint)
+        ))
 
   (load-theme 'modus-operandi :no-confirm)
   )
@@ -127,8 +128,14 @@
   (add-to-list '+doom-dashboard-menu-sections
                '("Open magit project"
                  :when (modulep! :tools magit)
-                 :icon (all-the-icons-octicon "mark-github" :face 'doom-dashboard-menu-title)
+                 :icon (nerd-icons-octicon "nf-oct-git_branch" :face 'doom-dashboard-menu-title)
                  :action magit-status))
+  ;; (add-to-list '+doom-dashboard-menu-sections
+  ;;              '("Start Working"
+  ;;                :when (file-exists-p! "~/work.org.gpg")
+  ;;                :icon (nerd-icons-octicon "nf-oct-checkbox" :face 'doom-dashboard-menu-title)
+  ;;                :action #'(find-file "~/work.org.gpg")))
+
   ;; (add-to-list '+doom-dashboard-menu-sections
   ;;              '("Search Org"
   ;;                :when (modulep! :lang org)

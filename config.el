@@ -24,28 +24,37 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Iosevka" :size 16)
-      doom-variable-pitch-font (font-spec :family "Iosevka"))
+(setq doom-font (font-spec :family "Iosevka Comfy" :size 16)
+      doom-variable-pitch-font (font-spec :family "Iosevka Comfy"))
+
+(setq shell-file-name (executable-find "bash")
+      vterm-shell (executable-find "fish"))
 
 (set-language-environment "UTF-8")
 (load! "+cnfont")
 
-(use-package! modus-themes
+;; (use-package! modus-themes
+;;   :config
+;;   (setq modus-themes-org-blocks 'gray-background
+;;         modus-themes-headings ; this is an alist: read the manual or its doc string
+;;         '((1 . (rainbow overline))
+;;           (2 . (rainbow))
+;;           (t . (semibold))))
+
+;;   (setq modus-themes-common-palette-overrides
+;;       '((border-mode-line-active unspecified)
+;;         (border-mode-line-inactive unspecified)
+;;         ;; (bg-mode-line-active bg-cyan-subtle)
+;;         ;; (fg-mode-line-active cyan-faint)
+;;         ))
+
+;;   (load-theme 'modus-operandi :no-confirm)
+;;   )
+
+(use-package! ef-themes
   :config
-  (setq modus-themes-org-blocks 'gray-background
-        modus-themes-headings ; this is an alist: read the manual or its doc string
-        '((1 . (rainbow overline))
-          (2 . (rainbow))
-          (t . (semibold))))
-
-  (setq modus-themes-common-palette-overrides
-      '((border-mode-line-active unspecified)
-        (border-mode-line-inactive unspecified)
-        ;; (bg-mode-line-active bg-cyan-subtle)
-        ;; (fg-mode-line-active cyan-faint)
-        ))
-
-  (load-theme 'modus-operandi :no-confirm)
+  (mapc #'disable-theme custom-enabled-themes)
+  (load-theme 'ef-light :no-confirm)
   )
 
 ;; There are two ways to load a theme. Both assume the theme is installed and

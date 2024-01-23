@@ -77,6 +77,32 @@
     :config
     (ox-extras-activate '(latex-header-blocks ignore-headlines)))
 
-
+  (register-aws-md)
 
 )
+
+(defun register-aws-md ()
+  (require 'ox-gfm)
+  (org-export-define-derived-backend 'aws-md 'gfm
+    :menu-entry
+    '(?i "Export to AWS internal note" org-aws-md-export-as-markdown)
+    :translate-alist
+    '((timestamp . org-aws-md-timestamp))
+  ))
+
+(defun org-aws-md-export-as-markdown (a s v b)
+  "export work log to command center case internal note."
+  (interactive)
+  (org-export-to-buffer 'aws-md "*AWS internal note Export*"
+    a s v b nil (lambda ()
+                      (gfm-mode)
+                      (kill-ring-save (point-min) (point-max))
+                      )))
+
+(defun org-aws-md-timestamp (timestamp _contents info)
+  "Transcode a TIMESTAMP object from Org to AWS Case internal note
+CONTENTS is nil.  INFO is a plist holding contextual
+information."
+  (let ((value (org-html-plain-text (org-timestamp-translate timestamp) info)))
+    (format "%s" value
+	    )))

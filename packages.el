@@ -99,3 +99,5 @@
   :recipe (:host github :repo "ajc/nginx-mode"))
 
 (package! grab-mac-link)
+
+(package! ox-gfm)

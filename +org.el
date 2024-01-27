@@ -82,8 +82,7 @@
 )
 
 (defun register-aws-md ()
-  (require 'ox-gfm)
-  (org-export-define-derived-backend 'aws-md 'gfm
+  (org-export-define-derived-backend 'aws-md 'md
     :menu-entry
     '(?i "Export to AWS internal note" org-aws-md-export-as-markdown)
     :translate-alist
@@ -95,8 +94,9 @@
   (interactive)
   (org-export-to-buffer 'aws-md "*AWS internal note Export*"
     a s v b nil (lambda ()
-                      (gfm-mode)
+                      (markdown-mode)
                       (kill-ring-save (point-min) (point-max))
+                      (message "Internal note copied.")
                       )))
 
 (defun org-aws-md-timestamp (timestamp _contents info)

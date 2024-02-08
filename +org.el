@@ -4,6 +4,10 @@
 
 (after! org
   (add-to-list 'org-agenda-files "~/work.org")
+  ;; remove [tab] in org-mode
+  ;; https://github.com/joaotavora/yasnippet/commit/25f5d8808af23fb3b3dd6a7aacb06e17006ffca6
+  (define-key org-mode-map
+              [tab] nil)
   (setq org-hide-leading-stars nil
         ;; org-fontify-quote-and-verse-blocks nil
         ;; org-fontify-whole-heading-line t

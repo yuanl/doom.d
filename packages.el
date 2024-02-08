@@ -54,8 +54,6 @@
 (package! langtool)
 (package! whole-line-or-region)
 
-(package! modus-themes :pin "b4ef90bb950b820a3bf316d7b212320a5b2f84d7")
-
 (package! ef-themes)
 
 (package! orderless)

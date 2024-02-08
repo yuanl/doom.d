@@ -65,7 +65,8 @@
            :repo "manateelazycat/lsp-bridge"
            :files (:defaults "*.py" "core" "langserver" "acm" "multiserver" "resources")
            :build (:not compile)
-           ))
+           )
+  :pin "378f5614408e49c0c3d5e85e20708fa50b1a0e62")
 
 ;; (package! deno-bridge
 ;;   :recipe (

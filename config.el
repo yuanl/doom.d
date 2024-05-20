@@ -161,7 +161,7 @@
   ;;   "Disable numbering the candidate."
   ;;   "")
   :custom
-  (rime-librime-root "/opt/local/")
+  (rime-librime-root (expand-file-name "librime/dist/" doom-emacs-dir))
   (rime-emacs-module-header-root (expand-file-name "../include" data-directory))
   (rime-user-data-dir "~/Library/Rime/")
   (default-input-method "rime")

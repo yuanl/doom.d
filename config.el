@@ -210,18 +210,40 @@
   (setq vterm-always-compile-module t))
 
 (use-package! lsp-bridge
+  :init
+  (after! js
+    (define-key js-mode-map (kbd "M-.") nil))
   :config
   (setq lsp-bridge-python-command "python3.11"
         lsp-bridge-enable-search-words nil
+        lsp-bridge-enable-with-tramp nil
         acm-enable-search-file-words nil
         acm-enable-doc nil
         acm-enable-tabnine nil
         acm-enable-path t
         acm-backend-yas-candidate-min-length 2
         lsp-bridge-python-command "python3.11")
-  ;; (yas-global-mode 1)
-  :init
+
+  (setq lsp-bridge-default-mode-hooks
+        '(emacs-lisp-mode-hook
+          java-mode-hook
+          js-mode-hook
+          js2-mode-hook
+          lisp-interaction-mode-hook
+          org-mode-hook
+          rjsx-mode-hook
+          typescript-mode-hook
+          typescript-tsx-mode-hook
+          ))
+
+  (set-lookup-handlers! 'lsp-bridge-mode
+    :definition #'lsp-bridge-find-def
+    :references #'lsp-bridge-find-references)
+
   (global-lsp-bridge-mode)
+
+  :init
+  (yas-global-mode 1)
   )
 
 (use-package! opencc

@@ -51,6 +51,9 @@
 
 (package! osx-trash :disable t)
 ;; (package! rime :pin "e5727c5218a4345adb9b960cf6f4202246aea70c")
+
+(package! company-dict :disable t)
+
 (package! langtool)
 (package! whole-line-or-region)
 
@@ -60,13 +63,14 @@
 (package! postframe
   :recipe (:host github :repo "tumashu/posframe"))
 
-(package! lsp-bridge
-  :recipe (:host github
-           :repo "manateelazycat/lsp-bridge"
-           :files (:defaults "*.py" "core" "langserver" "acm" "multiserver" "resources")
-           :build (:not compile)
-           )
-  :pin "378f5614408e49c0c3d5e85e20708fa50b1a0e62")
+(when (package! lsp-bridge
+        :recipe (:host github
+                 :repo "manateelazycat/lsp-bridge"
+                 :files (:defaults "*.py" "core" "langserver" "acm" "multiserver" "resources")
+                 :build (:not compile)
+                 ))
+  (package! markdown-mode)
+  (package! yasnippet))
 
 ;; (package! deno-bridge
 ;;   :recipe (

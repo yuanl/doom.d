@@ -22,7 +22,9 @@
            "* %U %?\n%i\n%a" :prepend t)
           ("n" "New Customer Case" entry
            (file+headline "~/work.org.gpg" "Case Work log")
-           "* %^{Case_ID} %^{Subject} %^g\n%?\n" :empty-lines 1)
+           "* [[https://command-center.support.aws.a2z.com/case-console#/cases/%^{Case_ID}][%\\1]] %^{Subject} %^g\n%?\n"
+           :clock-in t
+           :clock-keep t)
           ("c" "Manually Cc Case" entry
            (file+headline "~/work.org.gpg" "Cc Case")
            "* [[https://command-center.support.aws.a2z.com/case-console#/cases/%^{Case_ID}][%\\1]] %?")

@@ -252,23 +252,9 @@
   (add-to-list 'opencc-configuration-files "aws")
   )
 
-;; (use-package! pangu-spacing
-;;   :config
-;;   (setq pangu-spacing-real-insert-separtor t)
-;;   ;; (pangu-spacing-mode 1)
-;;   :hook (org-mode pangu-spacing-mode)
-;;   )
-
 (remove-hook! (prog-mode conf-mode) #'highlight-numbers-mode)
 (setq +emacs-lisp-enable-extra-fontification nil)
 
-;; (after! elisp-mode
-;;   (remove-hook! 'emacs-lisp-mode-hook
-;;     #'rainbow-delimiters-mode
-;;     #'highlight-quoted-mode
-;;     #'outline-minor-mode))
-
-;; (use-package! mind-wave)
 (use-package! shell-maker)
 (use-package! chatgpt-shell
   :config

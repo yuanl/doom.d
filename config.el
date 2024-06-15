@@ -74,8 +74,9 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type nil)
 (setq word-wrap-by-category t)
+(setq display-line-numbers-type t)
+(remove-hook! '(text-mode-hook) #'display-line-numbers-mode)
 
 ;; (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 

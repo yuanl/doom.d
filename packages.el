@@ -63,28 +63,6 @@
 (package! postframe
   :recipe (:host github :repo "tumashu/posframe"))
 
-(when (package! lsp-bridge
-        :recipe (:host github
-                 :repo "manateelazycat/lsp-bridge"
-                 :files (:defaults "*.py" "core" "langserver" "acm" "multiserver" "resources")
-                 :build (:not compile)
-                 ))
-  (package! markdown-mode)
-  (package! yasnippet))
-
-;; (package! deno-bridge
-;;   :recipe (
-;;            :host github
-;;            :repo "manateelazycat/deno-bridge"
-;;            :files (:defaults "*.py")))
-
-;; (package! deno-bridge-jieba
-;;   :recipe (:host github
-;;            :repo "ginqi7/deno-bridge-jieba"
-;;            :files (:defaults "*.ts")))
-
-;; (package! websocket)
-
 ;; (package! org-modern)
 
 (package! opencc)
@@ -102,3 +80,7 @@
   :recipe (:host github :repo "ajc/nginx-mode"))
 
 (package! grab-mac-link)
+
+(package! eglot-booster
+  :recipe (:host github :repo "jdtsmith/eglot-booster"
+           :files(:defaults)))

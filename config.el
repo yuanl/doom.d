@@ -77,6 +77,8 @@
 (setq word-wrap-by-category t)
 (setq display-line-numbers-type t)
 (remove-hook! '(text-mode-hook) #'display-line-numbers-mode)
+;; (remove-hook! (prog-mode conf-mode) #'highlight-numbers-mode)
+(setq +emacs-lisp-enable-extra-fontification nil)
 
 ;; (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
@@ -252,9 +254,6 @@
   :config
   (add-to-list 'opencc-configuration-files "aws")
   )
-
-(remove-hook! (prog-mode conf-mode) #'highlight-numbers-mode)
-(setq +emacs-lisp-enable-extra-fontification nil)
 
 (use-package! shell-maker)
 (use-package! chatgpt-shell

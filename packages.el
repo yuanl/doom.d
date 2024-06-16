@@ -53,6 +53,7 @@
 ;; (package! rime :pin "e5727c5218a4345adb9b960cf6f4202246aea70c")
 
 (package! company-dict :disable t)
+(package! lsp-ui :disable t)
 
 (package! langtool)
 (package! whole-line-or-region)

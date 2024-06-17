@@ -21,7 +21,8 @@
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       company           ; the ultimate code completion backend
+       ;;company           ; the ultimate code completion backend
+       (corfu +orderless)  ; complete with cap(f), cape and a flying feather!
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;ivy               ; a search engine for love and life
@@ -38,7 +39,7 @@
        ;; indent-guides     ; highlighted indent columns
        (ligatures +extra +iosevka)         ; ligatures and symbols to make your code pretty again
        ;;minimap           ; show a map of the code on the side
-       (modeline)          ; snazzy, Atom-inspired modeline, plus API
+       modeline          ; snazzy, Atom-inspired modeline, plus API
        ;;nav-flash         ; blink cursor line after big motions
        ;;neotree           ; a project drawer, like NERDTree for vim
        ophints           ; highlight the region an operation acts on
@@ -74,7 +75,7 @@
        vc                ; version-control and Emacs, sitting in a tree
 
        :term
-       ;; eshell            ; the elisp shell that works everywhere
+       ;;eshell            ; the elisp shell that works everywhere
        ;;shell             ; simple shell REPL for Emacs
        ;;term              ; basic terminal emulator for Emacs
        vterm             ; the best terminal emulation in Emacs
@@ -87,13 +88,13 @@
        :tools
        ;;ansible
        ;;biblio            ; Writes a PhD for you (citation needed)
+       ;;collab            ; buffers with friends
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        ;;direnv
        ;;docker
        editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
-       ;;gist              ; interacting with github gists
        lookup              ; navigate your code and its documentation
        (lsp)               ; M-x vscode
        magit             ; a git porcelain for Emacs
@@ -109,13 +110,13 @@
        ;;upload            ; map local to remote projects via ssh/ftp
 
        :os
-       (:if IS-MAC macos)  ; improve compatibility with macOS
+       (:if (featurep :system 'macos) macos)  ; improve compatibility with macOS
        ;;tty               ; improve the terminal Emacs experience
 
        :lang
        ;;agda              ; types of types of types of types...
        ;;beancount         ; mind the GAAP
-       cc                ; C > C++ == 1
+       ;;(cc +lsp)         ; C > C++ == 1
        ;;clojure           ; java with a lisp
        common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs

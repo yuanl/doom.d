@@ -237,6 +237,21 @@
   (setq grab-mac-link-dwim-favourite-app 'firefox)
   :bind ("s-b" . grab-mac-link-dwim))
 
+(after! corfu
+  (setq corfu-auto nil))
+
+(use-package! corfu-candidate-overlay
+  :after corfu
+  :config
+  ;; enable corfu-candidate-overlay mode globally
+  ;; this relies on having corfu-auto set to nil
+  (corfu-candidate-overlay-mode +1)
+  ;; bind Ctrl + TAB to trigger the completion popup of corfu
+  (global-set-key (kbd "C-<tab>") 'completion-at-point)
+  ;; bind Ctrl + Shift + Tab to trigger completion of the first candidate
+  ;; (keybing <iso-lefttab> may not work for your keyboard model)
+  (global-set-key (kbd "C-M-<tab>") 'corfu-candidate-overlay-complete-at-point))
+
 (use-package! lsp
   :custom
   (lsp-headerline-breadcrumb-enable nil)

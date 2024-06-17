@@ -85,3 +85,8 @@
 (package! eglot-booster
   :recipe (:host github :repo "jdtsmith/eglot-booster"
            :files(:defaults)))
+
+(package! corfu-candidate-overlay
+  :recipe (:type git
+           :repo "https://code.bsdgeek.org/adam/corfu-candidate-overlay"
+           :files (:defaults "*.el")))

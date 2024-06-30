@@ -112,48 +112,50 @@
       "C-+" #'er/expand-region       ;; Easier for split keyboard
       ;; treemacs binding
       (:when (modulep! :ui treemacs)
-       "s-j" #'treemacs
-       "M-0" #'treemacs-select-window)
+        "s-j" #'treemacs
+        "M-0" #'treemacs-select-window)
       ;; eww browser
       ;; "s-b" #'eww
       ;;; smartparens
       (:after smartparens
-        :map smartparens-mode-map
-        "C-)" #'sp-forward-slurp-sexp
-        "C-M-)" #'sp-forward-barf-sexp
-        "C-("  #'sp-backward-slurp-sexp
-        "C-M-("  #'sp-backward-barf-sexp)
+       :map smartparens-mode-map
+       "C-)" #'sp-forward-slurp-sexp
+       "C-M-)" #'sp-forward-barf-sexp
+       "C-("  #'sp-backward-slurp-sexp
+       "C-M-("  #'sp-backward-barf-sexp)
       (:when (modulep! :term eshell)
-       "s-t" #'+eshell/toggle)
+        "s-t" #'+eshell/toggle)
       (:when (modulep! :term vterm)
-       "s-t" #'+vterm/toggle)
+        "s-t" #'+vterm/toggle)
       (:when (modulep! :checkers spell)
-       "C-M-<tab>" #'company-ispell)
+        "C-M-<tab>" #'company-ispell)
       (:when (modulep! :app rss)
-       "C-x w" #'elfeed)
+        "C-x w" #'elfeed)
       (:when (modulep! :lang org)
-       "s--" #'org-insert-todo-heading)
-       "s-e" #'lsp-bridge-toggle-sdcv-helper)
+        "s--" #'org-insert-todo-heading)
+      (:when (modulep! :tools lsp +eglot)
+        "s-e" #'eglot)
+      )
 
 
-(when (modulep! :ui doom-dashboard)
-  (add-to-list '+doom-dashboard-menu-sections
-               '("Open magit project"
-                 :when (modulep! :tools magit)
-                 :icon (nerd-icons-octicon "nf-oct-git_branch" :face 'doom-dashboard-menu-title)
-                 :action magit-status))
-  ;; (add-to-list '+doom-dashboard-menu-sections
-  ;;              '("Start Working"
-  ;;                :when (file-exists-p! "~/work.org.gpg")
-  ;;                :icon (nerd-icons-octicon "nf-oct-checkbox" :face 'doom-dashboard-menu-title)
-  ;;                :action #'(find-file "~/work.org.gpg")))
+;; (when (modulep! :ui doom-dashboard)
+;;   (add-to-list '+doom-dashboard-menu-sections
+;;                '("Open magit project"
+;;                  :when (modulep! :tools magit)
+;;                  :icon (nerd-icons-octicon "nf-oct-git_branch" :face 'doom-dashboard-menu-title)
+;;                  :action magit-status))
+;;   ;; (add-to-list '+doom-dashboard-menu-sections
+;;   ;;              '("Start Working"
+;;   ;;                :when (file-exists-p! "~/work.org.gpg")
+;;   ;;                :icon (nerd-icons-octicon "nf-oct-checkbox" :face 'doom-dashboard-menu-title)
+;;   ;;                :action #'(find-file "~/work.org.gpg")))
 
-  ;; (add-to-list '+doom-dashboard-menu-sections
-  ;;              '("Search Org"
-  ;;                :when (modulep! :lang org)
-  ;;                :icon (all-the-icons-octicon "search" :face 'doom-dashboard-menu-title)
-  ;;                :action +default/org-notes-search))
-  )
+;;   ;; (add-to-list '+doom-dashboard-menu-sections
+;;   ;;              '("Search Org"
+;;   ;;                :when (modulep! :lang org)
+;;   ;;                :icon (all-the-icons-octicon "search" :face 'doom-dashboard-menu-title)
+;;   ;;                :action +default/org-notes-search))
+;;   )
 
 (when (modulep! :email mu4e)
   (load! "+email"))
@@ -252,46 +254,10 @@
   ;; (keybing <iso-lefttab> may not work for your keyboard model)
   (global-set-key (kbd "C-M-<tab>") 'corfu-candidate-overlay-complete-at-point))
 
-(use-package! lsp
-  :custom
-  (lsp-headerline-breadcrumb-enable nil)
-  (lsp-enable-indentation nil)
-  (lsp-enable-on-type-formatting nil)
-  (lsp-modeline-code-actions-enable nil)
-  (lsp-modeline-diagnostics-enable nil))
-
 (use-package! epa
   :config
   (setq epg-pinentry-mode 'ask)
   )
 
-;; lsp-booster
-(defun lsp-booster--advice-json-parse (old-fn &rest args)
-  "Try to parse bytecode instead of json."
-  (or
-   (when (equal (following-char) ?#)
-     (let ((bytecode (read (current-buffer))))
-       (when (byte-code-function-p bytecode)
-         (funcall bytecode))))
-   (apply old-fn args)))
-(advice-add (if (progn (require 'json)
-                       (fboundp 'json-parse-buffer))
-                'json-parse-buffer
-              'json-read)
-            :around
-            #'lsp-booster--advice-json-parse)
-
-(defun lsp-booster--advice-final-command (old-fn cmd &optional test?)
-  "Prepend emacs-lsp-booster command to lsp CMD."
-  (let ((orig-result (funcall old-fn cmd test?)))
-    (if (and (not test?)                             ;; for check lsp-server-present?
-             (not (file-remote-p default-directory)) ;; see lsp-resolve-final-command, it would add extra shell wrapper
-             lsp-use-plists
-             (not (functionp 'json-rpc-connection))  ;; native json-rpc
-             (executable-find "emacs-lsp-booster"))
-        (progn
-          (message "Using emacs-lsp-booster for %s!" orig-result)
-          (cons "emacs-lsp-booster" orig-result))
-      orig-result)))
-(advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command)
-
+(after! eglot
+  :config (eglot-booster-mode))

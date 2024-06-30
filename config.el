@@ -211,7 +211,7 @@
 ;;   (setq lsp-yaml-schemas '(:kubernetes "/*.yaml")))
 
 (use-package! vterm
-  :config
+  :init
   (setq vterm-always-compile-module t))
 
 (use-package! opencc

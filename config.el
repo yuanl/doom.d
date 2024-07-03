@@ -135,27 +135,9 @@
         "s--" #'org-insert-todo-heading)
       (:when (modulep! :tools lsp +eglot)
         "s-e" #'eglot)
+      (:when (modulep! :tools magit)
+        "M-s-G" #'magit)
       )
-
-
-;; (when (modulep! :ui doom-dashboard)
-;;   (add-to-list '+doom-dashboard-menu-sections
-;;                '("Open magit project"
-;;                  :when (modulep! :tools magit)
-;;                  :icon (nerd-icons-octicon "nf-oct-git_branch" :face 'doom-dashboard-menu-title)
-;;                  :action magit-status))
-;;   ;; (add-to-list '+doom-dashboard-menu-sections
-;;   ;;              '("Start Working"
-;;   ;;                :when (file-exists-p! "~/work.org.gpg")
-;;   ;;                :icon (nerd-icons-octicon "nf-oct-checkbox" :face 'doom-dashboard-menu-title)
-;;   ;;                :action #'(find-file "~/work.org.gpg")))
-
-;;   ;; (add-to-list '+doom-dashboard-menu-sections
-;;   ;;              '("Search Org"
-;;   ;;                :when (modulep! :lang org)
-;;   ;;                :icon (all-the-icons-octicon "search" :face 'doom-dashboard-menu-title)
-;;   ;;                :action +default/org-notes-search))
-;;   )
 
 (when (modulep! :email mu4e)
   (load! "+email"))

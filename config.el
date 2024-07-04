@@ -188,10 +188,6 @@
       "Disable auto completion at eshell."
       (setq-local company-idle-delay nil))))
 
-;; (after! lsp-yamls
-;;   :config
-;;   (setq lsp-yaml-schemas '(:kubernetes "/*.yaml")))
-
 (use-package! vterm
   :init
   (setq vterm-always-compile-module t))
@@ -210,31 +206,12 @@
   (add-to-list 'chatgpt-shell-system-prompts
                '("EN_ZH Translate" . "You are a helpful English to Chinese assistant.")))
 
-;; (use-package! org-modern
-;;   :hook (org-mode . org-modern-mode)
-;;   :custom (line-spacing 0.1))
-
 (setq gcmh-high-cons-threshold (* 256 1024 1024))
 
 (use-package! grab-mac-link
   :config
   (setq grab-mac-link-dwim-favourite-app 'firefox)
   :bind ("s-b" . grab-mac-link-dwim))
-
-(after! corfu
-  (setq corfu-auto nil))
-
-(use-package! corfu-candidate-overlay
-  :after corfu
-  :config
-  ;; enable corfu-candidate-overlay mode globally
-  ;; this relies on having corfu-auto set to nil
-  (corfu-candidate-overlay-mode +1)
-  ;; bind Ctrl + TAB to trigger the completion popup of corfu
-  (global-set-key (kbd "C-<tab>") 'completion-at-point)
-  ;; bind Ctrl + Shift + Tab to trigger completion of the first candidate
-  ;; (keybing <iso-lefttab> may not work for your keyboard model)
-  (global-set-key (kbd "C-M-<tab>") 'corfu-candidate-overlay-complete-at-point))
 
 (use-package! epa
   :config
@@ -247,3 +224,10 @@
 (use-package! company
   :custom
   (company-dabbrev-char-regexp "[A-Za-z-_]"))   ;; Do not try to complete on non-alphabe char.
+
+(use-package! ansi-color
+  :config
+  (defun display-ansi-colors ()
+    (interactive)
+    (ansi-color-apply-on-region (point-min) (point-max)))
+  )

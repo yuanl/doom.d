@@ -50,7 +50,6 @@
 ;(unpin! t)
 
 (package! osx-trash :disable t)
-;; (package! rime :pin "e5727c5218a4345adb9b960cf6f4202246aea70c")
 
 (package! company-dict :disable t)
 (package! lsp-ui :disable t)
@@ -70,9 +69,6 @@
 
 (package! rime)
 
-;; (package! shell-maker
-;;   :recipe (:host github :repo "xenodium/chatgpt-shell" :files ("shell-maker.el")))
-
 (package! chatgpt-shell
   :recipe (:host github :repo "xenodium/chatgpt-shell"
            :files(:defaults)))
@@ -86,7 +82,4 @@
   :recipe (:host github :repo "jdtsmith/eglot-booster"
            :files(:defaults)))
 
-(package! corfu-candidate-overlay
-  :recipe (:type git
-           :repo "https://code.bsdgeek.org/adam/corfu-candidate-overlay"
-           :files (:defaults "*.el")))
+(package! ansi-color)

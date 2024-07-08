@@ -69,7 +69,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/")
+(setq org-directory "~/org/")
 (load! "+org")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line

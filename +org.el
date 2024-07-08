@@ -25,6 +25,11 @@
            "* [[https://command-center.support.aws.a2z.com/case-console#/cases/%^{Case_ID}][%\\1]] %^{Subject} %^g\n%?\n"
            :clock-in t
            :clock-keep t)
+          ("e" "New Ops Ticket" entry
+           (file+headline "~/work.org.gpg" "Case Work log")
+           "* [[https://t.corp.amazon.com/%^{Ticket_ID}][%\\1]] %^{Subject} %^g\n%?\n"
+           :clock-in t
+           :clock-keep t)
           ("c" "Manually Cc Case" entry
            (file+headline "~/work.org.gpg" "Cc Case")
            "* [[https://command-center.support.aws.a2z.com/case-console#/cases/%^{Case_ID}][%\\1]] %?")

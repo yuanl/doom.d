@@ -229,7 +229,13 @@
         acm-enable-capf t
         acm-backend-yas-candidate-min-length 2
         )
-  (global-lsp-bridge-mode))
+  (global-lsp-bridge-mode)
+
+  (set-lookup-handlers! '(js-mode js-ts-mode bash-mode bash-ts-mode)
+    :definition #'lsp-bridge-find-def
+    :references #'lsp-bridge-find-references
+    :documentation #'lsp-bridge-show-documentation)
+  )
 
 (use-package! ansi-color
   :config

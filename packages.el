@@ -57,7 +57,7 @@
 (package! langtool)
 (package! whole-line-or-region)
 
-(package! ef-themes)
+(package! modus-themes)
 
 (package! orderless)
 (package! postframe

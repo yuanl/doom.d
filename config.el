@@ -33,28 +33,10 @@
 (set-language-environment "UTF-8")
 (load! "+cnfont")
 
-;; (use-package! modus-themes
-;;   :config
-;;   (setq modus-themes-org-blocks 'gray-background
-;;         modus-themes-headings ; this is an alist: read the manual or its doc string
-;;         '((1 . (rainbow overline))
-;;           (2 . (rainbow))
-;;           (t . (semibold))))
-
-;;   (setq modus-themes-common-palette-overrides
-;;       '((border-mode-line-active unspecified)
-;;         (border-mode-line-inactive unspecified)
-;;         ;; (bg-mode-line-active bg-cyan-subtle)
-;;         ;; (fg-mode-line-active cyan-faint)
-;;         ))
-
-;;   (load-theme 'modus-operandi :no-confirm)
-;;   )
-
-(use-package! ef-themes
+(use-package! modus-themes
   :config
   (mapc #'disable-theme custom-enabled-themes)
-  (load-theme 'ef-light :no-confirm)
+  (load-theme 'modus-operandi :no-confirm)
   )
 
 ;; There are two ways to load a theme. Both assume the theme is installed and

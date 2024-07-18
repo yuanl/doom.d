@@ -24,8 +24,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Iosevka SS08" :size 16)
-      doom-variable-pitch-font (font-spec :family "Iosevka SS08"))
+(setq doom-font (font-spec :family "Iosevka SS05" :size 16)
+      doom-variable-pitch-font (font-spec :family "Iosevka SS05"))
 
 (setq shell-file-name (executable-find "bash")
       vterm-shell (executable-find "fish"))

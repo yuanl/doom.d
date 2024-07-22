@@ -212,11 +212,6 @@
         acm-backend-yas-candidate-min-length 2
         )
   (global-lsp-bridge-mode)
-
-  (set-lookup-handlers! '(js-mode js-ts-mode bash-mode bash-ts-mode)
-    :definition #'lsp-bridge-find-def
-    :references #'lsp-bridge-find-references
-    :documentation #'lsp-bridge-show-documentation)
   )
 
 (use-package! ansi-color
@@ -224,4 +219,12 @@
   (defun display-ansi-colors ()
     (interactive)
     (ansi-color-apply-on-region (point-min) (point-max)))
+  )
+
+(use-package! rjsx-mode
+  :config
+  (set-lookup-handlers! '(js-mode js-ts-mode js2-mode rjsx-mode)
+    :definition #'lsp-bridge-find-def
+    :references #'lsp-bridge-find-references
+    :documentation #'lsp-bridge-show-documentation)
   )

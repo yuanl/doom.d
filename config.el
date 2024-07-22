@@ -228,3 +228,9 @@
     :references #'lsp-bridge-find-references
     :documentation #'lsp-bridge-show-documentation)
   )
+
+(use-package! js2-refactor-mode
+  :bind
+  (("M-p" . js2r-move-line-up)
+   ("M-n" . js2r-move-line-down))
+  )

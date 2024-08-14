@@ -211,8 +211,7 @@
         acm-enable-capf t
         acm-backend-yas-candidate-min-length 2
         )
-  (global-lsp-bridge-mode)
-  )
+  (global-lsp-bridge-mode))
 
 (use-package! ansi-color
   :config

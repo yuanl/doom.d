@@ -115,6 +115,8 @@
         "C-x w" #'elfeed)
       (:when (modulep! :lang org)
         "s--" #'org-insert-todo-heading)
+      (:when (modulep! :tools lsp +eglot)
+        "s-e" #'eglot)
       (:when (modulep! :tools magit)
         "M-s-G" #'magit)
       )
@@ -198,20 +200,12 @@
   (setq epg-pinentry-mode 'ask)
   )
 
-(use-package! lsp-bridge
-  :config
-  (setq lsp-bridge-enable-log nil
-        lsp-bridge-python-command "python3.11"
-        lsp-bridge-enable-search-words nil
-        lsp-bridge-enable-with-tramp nil
-        acm-enable-search-file-words nil
-        acm-enable-doc nil
-        acm-enable-tabnine nil
-        acm-enable-path t
-        acm-enable-capf t
-        acm-backend-yas-candidate-min-length 2
-        )
-  (global-lsp-bridge-mode))
+(after! eglot
+  :config (eglot-booster-mode))
+
+(use-package! company
+  :custom
+  (company-dabbrev-char-regexp "[A-Za-z-_]"))   ;; Do not try to complete on non-alphabe char.
 
 (use-package! ansi-color
   :config

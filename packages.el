@@ -50,10 +50,8 @@
 ;(unpin! t)
 
 (package! osx-trash :disable t)
-(package! tide :disable t)
 
 (package! company-dict :disable t)
-(package! lsp-ui :disable t)
 
 (package! langtool)
 (package! whole-line-or-region)

@@ -51,7 +51,7 @@
 
 (package! osx-trash :disable t)
 
-(package! company-dict :disable t)
+(package! yasnippet-capf :disable t) ;; this package slow down corfu.
 
 (package! langtool)
 (package! whole-line-or-region)

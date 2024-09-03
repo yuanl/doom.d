@@ -82,7 +82,10 @@
 
   (setq org-latex-compiler "xelatex")
 
-  (setq split-width-threshold 200)
+  ;; Disable english dict and yasnippet-capf in org-mode. They slow down corfu.
+  (setq text-mode-ispell-word-completion nil)
+  (remove-hook 'completion-at-point-functions #'ispell-completion-at-point t)
+  ;; (remove-hook 'completion-at-point-functions #'yasnippet-capf t)
 
   (use-package! ox-extra
     :config
@@ -105,9 +108,10 @@
   (interactive)
   (org-export-to-buffer 'aws-md "*AWS internal note Export*"
     a s v b nil (lambda ()
-                      (markdown-mode)
+                      ;; (markdown-mode)
                       (kill-ring-save (point-min) (point-max))
                       (message "Internal note copied.")
+                      (markdown-view-mode)
                       )))
 
 (defun org-aws-md-timestamp (timestamp _contents info)

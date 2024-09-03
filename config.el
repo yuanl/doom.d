@@ -235,3 +235,7 @@
   (("M-p" . js2r-move-line-up)
    ("M-n" . js2r-move-line-down))
   )
+
+(use-package! consult-yasnippet
+  :bind
+  (("C-M-y" . consult-yasnippet)))

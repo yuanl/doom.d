@@ -30,6 +30,14 @@
 (setq shell-file-name (executable-find "bash")
       vterm-shell (executable-find "fish"))
 
+;; This trick has huge performance gain on long-line
+;; https://emacs-china.org/t/topic/25811
+(setq-default bidi-display-reordering nil)
+(setq bidi-inhibit-bpa t
+      long-line-threshold 1000
+      large-hscroll-threshold 1000
+      syntax-wholeline-max 1000)
+
 (set-language-environment "UTF-8")
 (load! "+cnfont")
 

@@ -180,7 +180,9 @@
 
 (use-package! vterm
   :init
-  (setq vterm-always-compile-module t))
+  (setq vterm-always-compile-module t)
+  :config
+  (add-to-list 'vterm-tramp-shells '("ssh" "/bin/bash")))
 
 (use-package! opencc
   :commands (opencc-replace-at-point)

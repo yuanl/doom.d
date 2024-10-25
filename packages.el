@@ -82,3 +82,5 @@
            :files(:defaults)))
 
 (package! ansi-color)
+
+(package! pulsar)

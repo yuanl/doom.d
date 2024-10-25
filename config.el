@@ -241,3 +241,8 @@
 (use-package! consult-yasnippet
   :bind
   (("C-M-y" . consult-yasnippet)))
+
+(use-package! pulsar
+  :config
+  (add-to-list 'pulsar-pulse-functions #'ace-window)
+  (pulsar-global-mode 1))

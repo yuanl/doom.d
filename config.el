@@ -246,3 +246,7 @@
   :config
   (add-to-list 'pulsar-pulse-functions #'ace-window)
   (pulsar-global-mode 1))
+
+(use-package! telega
+  :config
+  (setf (alist-get 2 telega-avatar-factors-alist)  '(0.4 . 0.1)))

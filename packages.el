@@ -84,3 +84,7 @@
 (package! ansi-color)
 
 (package! pulsar)
+
+(package! telega)
+
+(package! gnus)

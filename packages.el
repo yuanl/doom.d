@@ -84,3 +84,6 @@
 (package! ansi-color)
 
 (package! pulsar)
+
+(package! ultra-scroll
+  :recipe (:host github :repo "jdtsmith/ultra-scroll"))

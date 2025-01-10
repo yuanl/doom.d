@@ -246,3 +246,10 @@
   :config
   (add-to-list 'pulsar-pulse-functions #'ace-window)
   (pulsar-global-mode 1))
+
+(use-package! ultra-scroll
+  :init
+  (setq scroll-conservatively 101
+        scroll-margin 0)
+  :config
+  (ultra-scroll-mode 1))

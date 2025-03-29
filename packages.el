@@ -87,3 +87,11 @@
 
 (package! ultra-scroll
   :recipe (:host github :repo "jdtsmith/ultra-scroll"))
+
+(package! emt
+  :recipe (:host github :repo "roife/emt"
+           :files ("*.el" "module/*" "module"))
+  ;; :hook (after-init . emt-mode)
+  )
+
+(package! systemd)

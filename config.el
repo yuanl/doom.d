@@ -253,3 +253,34 @@
         scroll-margin 0)
   :config
   (ultra-scroll-mode 1))
+
+;; (use-package! org-modern
+;;   :init
+;;   (modify-all-frames-parameters
+;;    '((right-divider-width . 40)
+;;      (internal-border-width . 40)))
+;;   (dolist (face '(window-divider
+;;                   window-divider-first-pixel
+;;                   window-divider-last-pixel))
+;;     (face-spec-reset-face face)
+;;     (set-face-foreground face (face-attribute 'default :background)))
+;;   (set-face-background 'fringe (face-attribute 'default :background))
+;;   :config
+;;   ;; org-modern
+;;   (setq
+;;    ;; Edit settings
+;;    org-auto-align-tags nil
+;;    org-tags-column 0
+;;    org-catch-invisible-edits 'show-and-error
+;;    org-special-ctrl-a/e t
+;;    org-insert-heading-respect-content t
+
+;;    ;; Org styling, hide markup etc.
+;;    org-hide-emphasis-markers t
+;;    org-pretty-entities t
+;;    org-agenda-tags-column 0))
+
+(use-package! emt
+  :hook (after-init . emt-mode))
+
+(use-package! systemd)

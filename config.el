@@ -213,6 +213,10 @@
 (after! eglot
   :config (eglot-booster-mode))
 
+(use-package! eglot-booster
+  :init
+  (setq eglot-booster-io-only t))
+
 ;; (use-package! company
 ;;   :custom
 ;;   (company-dabbrev-char-regexp "[A-Za-z-_]"))   ;; Do not try to complete on non-alphabe char.

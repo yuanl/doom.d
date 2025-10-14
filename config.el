@@ -182,7 +182,9 @@
   :init
   (setq vterm-always-compile-module t)
   :config
-  (add-to-list 'vterm-tramp-shells '("ssh" "/bin/bash")))
+  (add-to-list 'vterm-tramp-shells '("ssh" "/bin/bash"))
+  (setq vterm-environment '("LC_ALL=C"
+                            "LC_CTYPE=C")))
 
 (use-package! opencc
   :commands (opencc-replace-at-point)

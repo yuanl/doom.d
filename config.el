@@ -286,7 +286,6 @@
 ;;    org-pretty-entities t
 ;;    org-agenda-tags-column 0))
 
-(use-package! emt
-  :hook (after-init . emt-mode))
-
 (use-package! systemd)
+
+(use-package! logview)

@@ -212,16 +212,16 @@
   (setq epg-pinentry-mode 'ask)
   )
 
-(after! eglot
-  :config (eglot-booster-mode))
-
-(use-package! eglot-booster
-  :init
-  (setq eglot-booster-io-only t))
-
 ;; (use-package! company
 ;;   :custom
 ;;   (company-dabbrev-char-regexp "[A-Za-z-_]"))   ;; Do not try to complete on non-alphabe char.
+
+(when (modulep! :completion corfu +dabbrev)
+  (after! dabbrev
+    :config
+    (setq dabbrev-abbrev-char-regexp "[A-Za-z-_]")
+    )
+  )
 
 (use-package! ansi-color
   :config

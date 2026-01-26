@@ -24,8 +24,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Iosevka SS05" :size 16)
-      doom-variable-pitch-font (font-spec :family "Iosevka SS05"))
+(setq doom-font (font-spec :family "PragmataPro Mono Liga" :size 16)
+      doom-variable-pitch-font (font-spec :family "PragmataPro Mono Liga"))
 
 (setq shell-file-name (executable-find "bash")
       vterm-shell (executable-find "fish"))
@@ -114,9 +114,10 @@
        "C-("  #'sp-backward-slurp-sexp
        "C-M-("  #'sp-backward-barf-sexp)
       (:when (modulep! :term eshell)
-        "s-t" #'+eshell/toggle)
-      (:when (modulep! :term vterm)
-        "s-t" #'+vterm/toggle)
+        "s-t" #'+eshell/toggle
+        "M-s-t" #'+eshell/here)
+      ;; (:when (modulep! :term vterm)
+      ;;   "s-t" #'+vterm/toggle)
       (:when (modulep! :checkers spell)
         "C-M-<tab>" #'company-ispell)
       (:when (modulep! :app rss)
@@ -132,31 +133,28 @@
 (when (modulep! :email mu4e)
   (load! "+email"))
 
-(use-package! rime                      ;; 中文输入法的部分
-  :init
-  ;; (defun rime--disable-candidate-num (_)
-  ;;   "Disable numbering the candidate."
-  ;;   "")
-  :custom
-  (rime-librime-root (expand-file-name "librime/dist/" doom-emacs-dir))
-  (rime-emacs-module-header-root (expand-file-name "../include" data-directory))
-  (rime-user-data-dir "~/Library/Rime/")
-  (default-input-method "rime")
-  ;; (rime-show-candidate 'popup)
-  ;; (rime-posframe-properties '(:internal-border-width 6))
-  (rime-disable-predicates '(rime-predicate-after-alphabet-char-p
-                             rime-predicate-space-after-cc-p)
-                             rime-predicate-current-uppercase-letter-p
-                             ;; rime-predicate-prog-in-code-p
-                             rime-predicate-org-in-src-block-p
-                             rime-predicate-ace-window-p
-                           )
-  ;; (rime-show-preedit 'inline)
-  ;; (rime-candidate-num-format-function #'rime--disable-candidate-num)
-)
-
-;; new pixel scroll feature in emacs29
-(pixel-scroll-precision-mode t)
+;; (use-package! rime                      ;; 中文输入法的部分
+;;   :init
+;;   ;; (defun rime--disable-candidate-num (_)
+;;   ;;   "Disable numbering the candidate."
+;;   ;;   "")
+;;   :custom
+;;   (rime-librime-root (expand-file-name "librime/dist/" doom-emacs-dir))
+;;   (rime-emacs-module-header-root (expand-file-name "../include" data-directory))
+;;   (rime-user-data-dir "~/Library/Rime/")
+;;   (default-input-method "rime")
+;;   ;; (rime-show-candidate 'popup)
+;;   ;; (rime-posframe-properties '(:internal-border-width 6))
+;;   (rime-disable-predicates '(rime-predicate-after-alphabet-char-p
+;;                              rime-predicate-space-after-cc-p)
+;;                              rime-predicate-current-uppercase-letter-p
+;;                              ;; rime-predicate-prog-in-code-p
+;;                              rime-predicate-org-in-src-block-p
+;;                              rime-predicate-ace-window-p
+;;                            )
+;;   ;; (rime-show-preedit 'inline)
+;;   ;; (rime-candidate-num-format-function #'rime--disable-candidate-num)
+;; )
 
 (after! ace-window
   (custom-set-faces!
@@ -182,7 +180,12 @@
   :init
   (setq magit-process-connection-type nil))
 
-(setq gcmh-high-cons-threshold (* 256 1024 1024))
+;; (use-package! vterm
+;;   :init
+;;   (setq vterm-always-compile-module t)
+;;   :config
+;;   (add-to-list 'vterm-tramp-shells '("ssh" "/bin/bash"))
+;;   (setq vterm-environment '("LC_ALL=C" "LC_CTYPE=C")))
 
 (use-package! grab-mac-link
   :config
@@ -194,30 +197,11 @@
   (setq epg-pinentry-mode 'ask)
   )
 
-(after! eglot
-  :config (eglot-booster-mode))
-
-(use-package! eglot-booster
-  :init
-  (setq eglot-booster-io-only t))
-
-;; (use-package! company
-;;   :custom
-;;   (company-dabbrev-char-regexp "[A-Za-z-_]"))   ;; Do not try to complete on non-alphabe char.
-
 (use-package! ansi-color
   :config
   (defun display-ansi-colors ()
     (interactive)
     (ansi-color-apply-on-region (point-min) (point-max)))
-  )
-
-(use-package! rjsx-mode
-  :config
-  (set-lookup-handlers! '(js-mode js-ts-mode js2-mode rjsx-mode)
-    :definition #'lsp-bridge-find-def
-    :references #'lsp-bridge-find-references
-    :documentation #'lsp-bridge-show-documentation)
   )
 
 (use-package! js2-refactor-mode
@@ -242,33 +226,12 @@
   :config
   (ultra-scroll-mode 1))
 
-;; (use-package! org-modern
-;;   :init
-;;   (modify-all-frames-parameters
-;;    '((right-divider-width . 40)
-;;      (internal-border-width . 40)))
-;;   (dolist (face '(window-divider
-;;                   window-divider-first-pixel
-;;                   window-divider-last-pixel))
-;;     (face-spec-reset-face face)
-;;     (set-face-foreground face (face-attribute 'default :background)))
-;;   (set-face-background 'fringe (face-attribute 'default :background))
-;;   :config
-;;   ;; org-modern
-;;   (setq
-;;    ;; Edit settings
-;;    org-auto-align-tags nil
-;;    org-tags-column 0
-;;    org-catch-invisible-edits 'show-and-error
-;;    org-special-ctrl-a/e t
-;;    org-insert-heading-respect-content t
+(use-package! logview)
 
-;;    ;; Org styling, hide markup etc.
-;;    org-hide-emphasis-markers t
-;;    org-pretty-entities t
-;;    org-agenda-tags-column 0))
-
-(use-package! emt
-  :hook (after-init . emt-mode))
-
-(use-package! systemd)
+(use-package ultra-scroll
+  ;:vc (:url "https://github.com/jdtsmith/ultra-scroll") ; if desired (emacs>=v30)
+  :init
+  (setq scroll-conservatively 3 ; or whatever value you prefer, since v0.4
+        scroll-margin 0)        ; important: scroll-margin>0 not yet supported
+  :config
+  (ultra-scroll-mode 1))

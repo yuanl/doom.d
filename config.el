@@ -178,27 +178,9 @@
       "Disable auto completion at eshell."
       (setq-local company-idle-delay nil))))
 
-(use-package! vterm
+(after! magit
   :init
-  (setq vterm-always-compile-module t)
-  :config
-  (add-to-list 'vterm-tramp-shells '("ssh" "/bin/bash"))
-  (setq vterm-environment '("LC_ALL=C"
-                            "LC_CTYPE=C")))
-
-(use-package! opencc
-  :commands (opencc-replace-at-point)
-  :config
-  (add-to-list 'opencc-configuration-files "aws")
-  )
-
-(use-package! shell-maker)
-(use-package! chatgpt-shell
-  :config
-  (setq chatgpt-shell-openai-key
-        (auth-source-pick-first-password :host "api.openai.com"))
-  (add-to-list 'chatgpt-shell-system-prompts
-               '("EN_ZH Translate" . "You are a helpful English to Chinese assistant.")))
+  (setq magit-process-connection-type nil))
 
 (setq gcmh-high-cons-threshold (* 256 1024 1024))
 

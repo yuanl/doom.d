@@ -66,7 +66,7 @@
 
 (package! opencc)
 
-(package! rime)
+;; (package! rime)
 
 (package! chatgpt-shell
   :recipe (:host github :repo "xenodium/chatgpt-shell"
@@ -77,12 +77,6 @@
 
 (package! grab-mac-link)
 
-(package! eglot-booster
-  :recipe (:host github :repo "jdtsmith/eglot-booster"
-           :files(:defaults)))
-
-(package! ansi-color)
-
 (package! pulsar)
 
 (package! ultra-scroll
@@ -90,6 +84,6 @@
 
 (package! systemd)
 
-(package! citre)
-
 (package! logview)
+
+(package! esh-help :disable t)

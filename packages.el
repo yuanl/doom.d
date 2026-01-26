@@ -68,10 +68,6 @@
 
 ;; (package! rime)
 
-(package! chatgpt-shell
-  :recipe (:host github :repo "xenodium/chatgpt-shell"
-           :files(:defaults)))
-
 (package! nginx-mode
   :recipe (:host github :repo "ajc/nginx-mode"))
 
@@ -85,5 +81,8 @@
 (package! systemd)
 
 (package! logview)
+
+(package! tramp-hlo
+  :recipe (:host github :repo "jsadusk/tramp-hlo"))
 
 (package! esh-help :disable t)

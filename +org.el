@@ -22,7 +22,7 @@
            "* %U %?\n%i\n%a" :prepend t)
           ("n" "New Customer Case" entry
            (file+headline "~/work.org.gpg" "Case Work log")
-           "* [[https://command-center.support.aws.a2z.com/case-console#/cases/%^{Case_ID}][%\\1]] %^{Subject} %^g\n%?\n"
+           "* [[https://command-center.support.aws.a2z.com/case-console#/cases/%^{Case_ID}][%\\1]] %^{Subject} \n%?\n"
            :clock-in t
            :clock-keep t)
           ("e" "New Ops Ticket" entry
@@ -92,7 +92,6 @@
     (ox-extras-activate '(latex-header-blocks ignore-headlines)))
 
   (register-aws-md)
-
 )
 
 (defun register-aws-md ()
@@ -121,3 +120,18 @@ information."
   (let ((value (org-html-plain-text (org-timestamp-translate timestamp) info)))
     (format "%s" value
 	    )))
+
+(defun yuanl/yank-markdown-as-org ()
+  "Yank Markdown text as Org.
+
+This command will convert Markdown text in the top of the `kill-ring'
+and convert it to Org using the pandoc utility."
+  (interactive)
+  (save-excursion
+    (with-temp-buffer
+      (yank)
+      (shell-command-on-region
+       (point-min) (point-max)
+       "pandoc -f markdown -t org --wrap=preserve" t t)
+      (kill-region (point-min) (point-max)))
+    (yank)))

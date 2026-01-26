@@ -104,6 +104,9 @@
       (:when (modulep! :ui treemacs)
         "s-j" #'treemacs
         "M-0" #'treemacs-select-window)
+      ;; cmd-k
+      (:when IS-MAC
+        "s-k" #'kill-buffer-and-window)
       ;; eww browser
       ;; "s-b" #'eww
       ;;; smartparens
@@ -115,9 +118,10 @@
        "C-M-("  #'sp-backward-barf-sexp)
       (:when (modulep! :term eshell)
         "s-t" #'+eshell/toggle
-        "M-s-t" #'+eshell/here)
+        "s-M-t" #'+eshell/here)
       ;; (:when (modulep! :term vterm)
-      ;;   "s-t" #'+vterm/toggle)
+      ;;   "s-t" #'+vterm/toggle
+      ;;   "s-M-t" #'+vterm/here)
       (:when (modulep! :checkers spell)
         "C-M-<tab>" #'company-ispell)
       (:when (modulep! :app rss)
@@ -215,6 +219,14 @@
     (ansi-color-apply-on-region (point-min) (point-max)))
   )
 
+;; (use-package! rjsx-mode
+;;   :config
+;;   (set-lookup-handlers! '(js-mode js-ts-mode js2-mode rjsx-mode)
+;;     :definition #'lsp-bridge-find-def
+;;     :references #'lsp-bridge-find-references
+;;     :documentation #'lsp-bridge-show-documentation)
+;;   )
+
 (use-package! js2-refactor-mode
   :bind
   (("M-p" . js2r-move-line-up)
@@ -248,11 +260,8 @@
 
 (use-package! logview)
 
-(use-package ultra-scroll
-  ;:vc (:url "https://github.com/jdtsmith/ultra-scroll") ; if desired (emacs>=v30)
-  :init
-  (setq scroll-conservatively 3 ; or whatever value you prefer, since v0.4
-        scroll-margin 0)        ; important: scroll-margin>0 not yet supported
-  :config
-  (ultra-scroll-mode 1))
-
+(use-package! tramp-hlo
+    :ensure t
+    :config
+    (tramp-hlo-setup)
+)

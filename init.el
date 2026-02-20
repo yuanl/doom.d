@@ -68,7 +68,7 @@
        ;;word-wrap         ; soft wrapping with language-aware indent
 
        :emacs
-       dired             ; making dired pretty [functional]
+       (dired +dirvish)             ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
        ;;eww               ; the internet is gross
        ibuffer           ; interactive buffer management
@@ -155,6 +155,7 @@
        org               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
+       ;;graphviz          ; diagrams for confusing yourself even more
        ;;purescript        ; javascript, but functional
        (python)            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever

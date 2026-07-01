@@ -56,7 +56,7 @@
 (package! langtool)
 (package! whole-line-or-region)
 
-(package! modus-themes)
+(package! ef-themes)
 
 (package! orderless)
 (package! postframe
@@ -82,7 +82,10 @@
 
 (package! logview)
 
-(package! tramp-hlo
-  :recipe (:host github :repo "jsadusk/tramp-hlo"))
-
 (package! esh-help :disable t)
+
+(package! expreg)
+
+(package! ghostel)
+
+(package! agent-shell)

@@ -34,17 +34,18 @@
 ;; https://emacs-china.org/t/topic/25811
 (setq-default bidi-display-reordering nil)
 (setq bidi-inhibit-bpa t
-      long-line-threshold 1000
+      long-line-threshold 100000
       large-hscroll-threshold 1000
-      syntax-wholeline-max 1000)
+      syntax-wholeline-max 1000
+      )
 
 (set-language-environment "UTF-8")
 (load! "+cnfont")
 
-(use-package! modus-themes
+(use-package! ef-themes
   :config
   (mapc #'disable-theme custom-enabled-themes)
-  (load-theme 'modus-operandi :no-confirm)
+  (load-theme 'ef-spring :no-confirm)
   )
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -54,17 +55,19 @@
 ;; (setq doom-theme nil)
 
 ;; Use a image as doom-dashboard.
-(when (modulep! :ui doom-dashboard)
+(when (modulep! :ui dashboard)
   (setq fancy-splash-image (expand-file-name "splash.png" doom-private-dir)))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/")
 (load! "+org")
+
+;; Might help chinese word wrap
+(setq word-wrap-by-category t)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq word-wrap-by-category t)
 (setq display-line-numbers-type t)
 (remove-hook! '(text-mode-hook) #'display-line-numbers-mode)
 ;; (remove-hook! (prog-mode conf-mode) #'highlight-numbers-mode)
@@ -99,7 +102,7 @@
 
 (map! "s-o" (lookup-key (current-global-map) (kbd "C-x o"))  ;; Alias "C-x o" to "super-o"
       "C-." #'set-mark-command       ;; C-SPC reserved for system input
-      "C-+" #'er/expand-region       ;; Easier for split keyboard
+      ;; "C-+" #'er/expand-region       ;; Easier for split keyboard
       ;; treemacs binding
       (:when (modulep! :ui treemacs)
         "s-j" #'treemacs
@@ -260,8 +263,37 @@
 
 (use-package! logview)
 
-(use-package! tramp-hlo
-    :ensure t
-    :config
-    (tramp-hlo-setup)
+(use-package! expreg
+  :config
+  (define-key global-map [remap er/expand-region] 'expreg-expand))
+
+(use-package! ghostel
+  :bind (("C-x m" . ghostel)
+         :map ghostel-semi-char-mode-map
+         ("C-s"  . consult-line)
+         ("C-k"  . my/ghostel-send-C-k-and-kill)
+         ;; ;; I'm used to go up/down the shell history with M-n/p from eshell
+         ;; ;; Simulate this behavior in ghostel by sending C-p and C-n
+         ("M-p" . (lambda () (interactive) (ghostel-send-key "p" "ctrl")))
+         ("M-n" . (lambda () (interactive) (ghostel-send-key "n" "ctrl")))
+         :map project-prefix-map
+         ("m" . ghostel-project)
+         ("M" . ghostel-project-list-buffers))
+  :config
+  (defun my/ghostel-send-C-k-and-kill ()
+    "Send `C-k' to ghostel.
+Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
+    (interactive)
+    (kill-ring-save (point) (line-end-position))
+    (ghostel-send-key "k" "ctrl"))
+
+  (add-to-list 'project-switch-commands '(ghostel-project "Ghostel") t)
+  (add-to-list 'project-switch-commands '(ghostel-project-list-buffers "Ghostel buffers") t)
+  (add-to-list 'ghostel-eval-cmds '("magit-status-setup-buffer" magit-status-setup-buffer)))
+
+(use-package! agent-shell
+    ;; :ensure-system-package
+    ;; Add agent installation configs here
+    ;; ((claude . "brew install claude-code")
+    ;;  (claude-agent-acp . "npm install -g @agentclientprotocol/claude-agent-acp")))
 )
